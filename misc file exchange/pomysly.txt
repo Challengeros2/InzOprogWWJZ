@@ -1,0 +1,11 @@
+2. Pomysły na projekt
+
+Rozważane pomysły:
+
+    System rezerwacji sal i pomieszczeń.
+    System zarządzania wypożyczalnią sprzętu.
+    System obsługi i zarządzania parkiem rozrywki.
+
+Wybrany pomysł: System obsługi i zarządzania parkiem rozrywki „Wirgo”.
+
+Wybrany temat pozwala na stworzenie aplikacji obejmującej kilka obszarów działalności parku, takich jak sprzedaż biletów, obsługa gastronomii, kontrola atrakcji oraz zarządzanie personelem.

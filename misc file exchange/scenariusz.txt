@@ -1,0 +1,11 @@
+Przykładowy scenariusz użycia
+
+    Gość przychodzi do parku rozrywki „Wirgo”.
+    Kasjer wybiera rodzaj wejściówki i sprzedaje gościowi opaskę z określoną liczbą żetonów.
+    Gość wybiera atrakcję, z której chce skorzystać.
+    Pracownik bramki wybiera atrakcję w systemie i skanuje identyfikator opaski RFID.
+    System sprawdza, czy opaska istnieje w bazie i czy posiada wystarczającą liczbę żetonów.
+    System sprawdza również, czy wybrana atrakcja jest sprawna i dostępna.
+    Jeżeli wszystkie warunki są spełnione, system pobiera odpowiednią liczbę żetonów i zezwala na wejście.
+    Jeżeli warunki nie są spełnione, system wyświetla odpowiedni komunikat.
+

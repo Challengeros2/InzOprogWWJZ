@@ -1,0 +1,8 @@
+F01	Użytkownik może sprzedawać bilety, karnety czasowe oraz wydawać opaski RFID z żetonami.	MVP
+F02	Użytkownik może sprawdzać stan opaski i doładowywać ją dodatkowymi żetonami.	MVP
+F03	Użytkownik może tworzyć zamówienia gastronomiczne i wysyłać je do kuchni.	MVP
+F04	Użytkownik może przeglądać zamówienia gastronomiczne i zmieniać ich status.	MVP
+F05	Użytkownik może sprawdzać stan techniczny atrakcji oraz zmieniać ich status.	MVP
+F06	Użytkownik może przydzielać pracowników do określonych stanowisk i tworzyć harmonogramy pracy.	Rozszerzenie
+F07	Użytkownik może weryfikować opaski RFID przy wejściu na atrakcje, a system może sprawdzać saldo żetonów i pobierać opłatę za wejście.	MVP
+F08	Użytkownik może usuwać wpisy z harmonogramu pracowników.	Rozszerzenie
