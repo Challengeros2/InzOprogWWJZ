@@ -1,0 +1,1845 @@
+Zaloguj się
+Zarejestruj się za darmo
+
+    zrob na podstawie tego zadan i kodu to co chodzi w zadaniach
+    INŻYNIERIA OPROGRAMOWANIA LABORATORIUM 01
+    Prowadzący zajęcia: Artur Samojluk 1 / 3
+    Prowadzący zajęcia: Artur Samojluk
+    Zespół i koncepcja
+    projektu
+    Utworzenie zespołu, wybór tematu i przygotowanie wspólnego środowiska pracy.
+    Cel ćwiczenia
+    Przekształcicie pomysł w zwięzły opis projektu informatycznego, określicie jego podstawowe
+    funkcjonalności i rozpoczniecie pracę w dwuosobowym zespole. Przygotowana dokumentacja
+    będzie punktem wyjścia do kolejnych laboratoriów.
+    1. Utwórzcie dwuosobowy zespół
+    Dobierzcie się w pary. Zapiszcie imiona i nazwiska, numery indeksów oraz grupę laboratoryjną. Ustalcie
+    nazwę zespołu, sposób kontaktu i wstępny podział zadań. Obie osoby odpowiadają za znajomość
+    koncepcji oraz aktualność dokumentacji projektu.
+    2. Wybierzcie ideę i nadajcie projektowi tytuł
+    Zaproponujcie 2-3 pomysły i wybierzcie jeden możliwy do rozwinięcia w semestrze przez dwie osoby.
+    Punktem wyjścia powinien być konkretny problem, np. rezerwowanie sal, organizacja wydarzeń lub
+    zarządzanie wypożyczeniami.
+    Tytuł projektu: [nazwa aplikacji i krótkie określenie jej przeznaczenia]. Przykład: SalaSpot - system
+    rezerwacji sal do pracy zespołowej.
+    W 8-12 zdaniach opiszcie: jaki problem rozwiązujecie, kto będzie korzystać z aplikacji, jak użytkownik
+    radzi sobie obecnie oraz co zyska dzięki Waszemu rozwiązaniu. Dodajcie jeden prosty scenariusz
+    użycia od rozpoczęcia działania do uzyskania efektu.
+    3. Określcie podstawowy zakres funkcjonalny
+    Wypiszcie 5-8 funkcjonalności i nadajcie im identyfikatory F01, F02 itd. Każdą opiszcie z perspektywy
+    użytkownika: „Użytkownik może…”. Wskażcie 3-5 funkcji obowiązkowych pierwszej wersji (MVP);
+    pozostałe oznaczcie jako rozszerzenia. Zapiszcie również co najmniej 2 elementy poza zakresem
+    pierwszej wersji.
+    Przykład zapisu funkcjonalności - fragment listy dla systemu rezerwacji sal:
+    ID Funkcjonalność Zakres
+    F01 Użytkownik może sprawdzić dostępne sale i terminy. MVP
+    F02 Użytkownik może zarezerwować wolny termin. MVP
+    F03 Użytkownik może anulować własną rezerwację. MVP
+    INŻYNIERIA OPROGRAMOWANIA LABORATORIUM 01
+    Prowadzący zajęcia: Artur Samojluk 2 / 3
+    Narzędzia i współpraca
+    Przygotujcie jedno wspólne miejsce prowadzenia projektu i jedno repozytorium. Sprawdźcie, czy
+    obie osoby mają dostęp do utworzonych zasobów.
+    4. LaboChat.com - konto zespołu
+    01 Otwórzcie LaboChat.com, załóżcie konto zespołu i skonfigurujcie dostęp dla obu osób.
+    02 Przygotujcie wspólne miejsce pracy projektu pod ustalonym tytułem. Zapiszcie nazwę zespołu,
+    skład, krótki opis pomysłu oraz odnośnik do repozytorium GitHub.
+    03 Zapoznajcie się z dostępnymi sposobami komunikacji, zapisywania ustaleń i organizowania
+    pracy. Ustalcie, gdzie zapisujecie decyzje i jak informujecie drugą osobę o postępach.
+    04 Zapiszcie co najmniej 4 zadania startowe, np. opis idei, lista funkcjonalności, przygotowanie
+    repozytorium i sprawdzenie dostępu. Dla każdego podajcie osobę odpowiedzialną, termin oraz
+    stan realizacji. Przydzielcie zadania obu osobom.
+    05 Każda osoba dodaje przynajmniej jedno ustalenie lub aktualizację. Odnotujcie zakończenie
+    wykonanych zadań.
+    5. GitHub - repozytorium projektu
+    01 Każda osoba zakłada własne konto na GitHub lub korzysta z istniejącego.
+    02 Jedna osoba tworzy publiczne repozytorium przez opcję New repository. Nadajcie krótką nazwę
+    powiązaną z tytułem, np. salaspot, dodajcie opis i włączcie utworzenie pliku README.md.
+    03 Dodajcie drugą osobę jako współpracownika z możliwością zapisu. Przyjmijcie zaproszenie i
+    sprawdźcie, czy obie osoby mogą wprowadzać zmiany.
+    04 Uzupełnijcie README.md według karty projektu na stronie 3. Repozytorium jest głównym źródłem
+    aktualnej dokumentacji; w LaboChat.com zamieszczajcie linki do odpowiednich materiałów.
+    05 Każda osoba zapisuje co najmniej jedną własną, merytoryczną zmianę (commit), np. opis idei
+    albo zakres funkcjonalny. Commit utrwala wersję zmian; jego opis powinien wyjaśniać, co zostało
+    dodane lub poprawione.
+    Efekt tego etapu
+    Zespół ma działające środowisko współpracy, repozytorium i pierwszą wersję dokumentacji.
+    Implementacja aplikacji będzie rozwijana w kolejnych ćwiczeniach.
+    Pomoc: GitHub Docs - utworzenie repozytorium i zapisanie pierwszej zmiany.
+    INŻYNIERIA OPROGRAMOWANIA LABORATORIUM 01
+    Prowadzący zajęcia: Artur Samojluk 3 / 3
+    Karta projektu i oddanie
+    Uzupełnijcie poniższe elementy w pliku README.md. Stosujcie ustalony tytuł projektu w
+    dokumentacji, repozytorium i przestrzeni zespołu.
+    6. Karta projektu - zawartość README.md
+    Element Co należy zapisać
+    Tytuł projektu Nazwa aplikacji oraz krótkie określenie jej przeznaczenia.
+    Zespół Nazwa zespołu; imiona i nazwiska obu osób, numery indeksów, grupa
+    laboratoryjna oraz nazwy kont GitHub.
+    Idea i problem Opis w 8-12 zdaniach: problem, obecny sposób działania, pomysł na
+    rozwiązanie i oczekiwana korzyść.
+    Użytkownicy i
+    scenariusz
+    Główna grupa odbiorców oraz przykładowa sytuacja: co użytkownik robi i jaki
+    efekt uzyskuje.
+    Zakres funkcjonalny Lista 5-8 funkcjonalności z identyfikatorami i opisami. Oznaczenie 3-5 funkcji
+    MVP oraz ewentualnych rozszerzeń.
+    Poza zakresem Co najmniej 2 elementy, których nie obejmie pierwsza wersja.
+    Organizacja
+    współpracy
+    Wstępny podział zadań, sposób kontaktu oraz zasada zapisywania i
+    aktualizowania ustaleń.
+    Odnośniki Link do repozytorium GitHub i do przestrzeni projektu w LaboChat.com.
+    7. Lista kontrolna przed oddaniem
+    Zespół liczy 2 osoby, a projekt ma uzgodniony tytuł i opis idei.
+    Lista obejmuje 5-8 funkcjonalności, oznaczone MVP oraz elementy poza zakresem.
+    Konto zespołu w LaboChat.com jest przygotowane; obie osoby mają dostęp i zapisano zadania.
+    Publiczne repozytorium zawiera kompletny README.md; obie osoby mają możliwość zapisu.
+    Historia repozytorium pokazuje co najmniej jeden merytoryczny commit każdej osoby.
+    Linki działają i umożliwiają prowadzącemu sprawdzenie rezultatów pracy.
+    Sposób oddania i termin
+    Przekażcie prowadzącemu link do repozytorium GitHub oraz link do przestrzeni projektu w
+    LaboChat.com. Zapewnijcie dostęp potrzebny do sprawdzenia materiałów. Termin: do kolejnych
+    zajęć. Obie osoby powinny umieć wyjaśnić ideę, zakres pierwszej wersji i przyjęty podział pracy.
+    <!DOCTYPE html>
+    <html lang="pl">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>System Zarządzania Parkiem Rozrywki</title>
+        <!-- Tailwind CSS CDN -->
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        colors: {
+                            brand: {
+                                50: '#f0f9ff',
+                                100: '#e0f2fe',
+                                500: '#0ea5e9',
+                                600: '#0284c7',
+                                700: '#0369a1',
+                                900: '#0c4a6e',
+                            }
+                        }
+                    }
+                }
+            }
+        </script>
+        <!-- FontAwesome for icons -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+            body { font-family: 'Inter', sans-serif; }
+            .tab-active { @apply bg-brand-600 text-white shadow-md; }
+            .tab-inactive { @apply text-slate-300 hover:bg-slate-800 hover:text-white; }
+        </style>
+    </head>
+    <body class="bg-slate-100 text-slate-800 min-h-screen flex flex-col">
+
+        <!-- Top Navigation & Role Switcher -->
+        <header class="bg-slate-900 text-white shadow-lg sticky top-0 z-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between h-16">
+                    <!-- Branding -->
+                    <div class="flex items-center space-x-3">
+                        <div class="bg-brand-500 p-2 rounded-lg text-white">
+                            <i class="fa-solid fa-ferris-wheel text-xl"></i>
+                        </div>
+                        <div>
+                            <h1 class="font-bold text-lg leading-tight">Park Rozrywki "Wirgo"</h1>
+                            <p class="text-xs text-slate-400">System Obsługi i Zarządzania v1.0</p>
+                        </div>
+                    </div>
+
+                    <!-- Desktop Role Navigation Tabs -->
+                    <nav class="hidden md:flex space-x-1" id="role-nav">
+                        <button onclick="switchRole('kasjer')" id="tab-kasjer" class="tab-btn tab-active px-3 py-2 rounded-md text-sm font-medium transition flex items-center gap-2">
+                            <i class="fa-solid fa-cash-register"></i> Kasjer
+                        </button>
+                        <button onclick="switchRole('kucharz')" id="tab-kucharz" class="tab-btn tab-inactive px-3 py-2 rounded-md text-sm font-medium transition flex items-center gap-2">
+                            <i class="fa-solid fa-utensils"></i> Kucharz
+                        </button>
+                        <button onclick="switchRole('technik')" id="tab-technik" class="tab-btn tab-inactive px-3 py-2 rounded-md text-sm font-medium transition flex items-center gap-2">
+                            <i class="fa-solid fa-wrench"></i> Technik
+                        </button>
+                        <button onclick="switchRole('menedzer')" id="tab-menedzer" class="tab-btn tab-inactive px-3 py-2 rounded-md text-sm font-medium transition flex items-center gap-2">
+                            <i class="fa-solid fa-user-gear"></i> Menedżer
+                        </button>
+                        <button onclick="switchRole('gost')" id="tab-gost" class="tab-btn tab-inactive px-3 py-2 rounded-md text-sm font-medium transition flex items-center gap-2">
+                            <i class="fa-solid fa-torii-gate"></i> Gość / Bramka
+                        </button>
+                    </nav>
+
+                    <!-- Status indicator -->
+                    <div class="hidden lg:flex items-center space-x-2 text-xs bg-slate-800 py-1.5 px-3 rounded-full border border-slate-700">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                        <span class="text-slate-300">System aktywny (2026-10-27)</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile Navigation Switcher -->
+            <div class="md:hidden bg-slate-800 px-2 pt-2 pb-3 space-y-1 sm:px-3 border-t border-slate-700 flex overflow-x-auto">
+                <button onclick="switchRole('kasjer')" id="mtab-kasjer" class="text-white text-xs px-3 py-1.5 rounded whitespace-nowrap bg-brand-600">Kasjer</button>
+                <button onclick="switchRole('kucharz')" id="mtab-kucharz" class="text-slate-300 text-xs px-3 py-1.5 rounded whitespace-nowrap">Kucharz</button>
+                <button onclick="switchRole('technik')" id="mtab-technik" class="text-slate-300 text-xs px-3 py-1.5 rounded whitespace-nowrap">Technik</button>
+                <button onclick="switchRole('menedzer')" id="mtab-menedzer" class="text-slate-300 text-xs px-3 py-1.5 rounded whitespace-nowrap">Menedżer</button>
+                <button onclick="switchRole('gost')" id="mtab-gost" class="text-slate-300 text-xs px-3 py-1.5 rounded whitespace-nowrap">Bramka</button>
+            </div>
+        </header>
+
+        <!-- Notification Toast System -->
+        <div id="toast-container" class="fixed bottom-4 right-4 z-50 flex flex-col space-y-2"></div>
+
+        <!-- Main Dynamic Content Container -->
+        <main class="flex-grow max-w-7xl w-full mx-auto p-4 sm:p-6 lg:p-8">
+
+            <!-- ==================== 1. KASJER SCREEN ==================== -->
+            <section id="screen-kasjer" class="space-y-6">
+                <div class="flex justify-between items-center border-b pb-4">
+                    <div>
+                        <h2 class="text-2xl font-bold text-slate-800">Terminal Kasjera</h2>
+                        <p class="text-sm text-slate-500">Kasa główna & Strefa Gastro</p>
+                    </div>
+                    <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-1 rounded">Kasjer ID: K-01</span>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <!-- Column 1: Wristband & Pass Sales -->
+                    <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                        <h3 class="text-lg font-semibold text-slate-800 flex items-center gap-2">
+                            <i class="fa-solid fa-ring text-brand-600"></i> Wydaj Paseczek / Bilety
+                        </h3>
+                        
+                        <form onsubmit="handleWristbandSale(event)" class="space-y-3">
+                            <div>
+                                <label class="block text-xs font-medium text-slate-600 mb-1">Typ Wejściówki</label>
+                                <select id="pass-type" onchange="togglePassInputs()" class="w-full text-sm border-slate-300 border rounded-lg p-2.5 focus:ring-brand-500 focus:border-brand-500">
+                                    <option value="tokens">Paseczek Żetonowy</option>
+                                    <option value="pass">Karnet Czasowy (Nielimitowany)</option>
+                                </select>
+                            </div>
+
+                            <div id="token-input-group">
+                                <label class="block text-xs font-medium text-slate-600 mb-1">Liczba Żetonów (2 zł / żeton)</label>
+                                <input type="number" id="token-count" min="1" value="10" class="w-full text-sm border-slate-300 border rounded-lg p-2.5">
+                            </div>
+
+                            <div id="pass-input-group" class="hidden">
+                                <label class="block text-xs font-medium text-slate-600 mb-1">Ważność Karnetu</label>
+                                <select id="pass-duration" class="w-full text-sm border-slate-300 border rounded-lg p-2.5">
+                                    <option value="1">1 Dzień (80 PLN)</option>
+                                    <option value="3">3 Dni (200 PLN)</option>
+                                    <option value="7">7 Dni (400 PLN)</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-medium text-slate-600 mb-1">Przypisz do Istniejącej Rezerwacji (Opcjonalnie)</label>
+                                <input type="text" id="res-search-id" placeholder="np. REZ-101" class="w-full text-sm border-slate-300 border rounded-lg p-2.5 uppercase">
+                            </div>
+
+                            <button type="submit" class="w-full bg-brand-600 hover:bg-brand-700 text-white font-medium py-2.5 rounded-lg text-sm transition">
+                                <i class="fa-solid fa-plus-circle mr-1"></i> Utwórz Konto i Wydaj Paseczek
+                            </button>
+                        </form>
+
+                        <!-- Fast Recharge -->
+                        <div class="pt-4 border-t border-slate-100">
+                            <h4 class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Szybkie Doładowanie Paseczka</h4>
+                            <div class="flex gap-2">
+                                <input type="text" id="recharge-tag" placeholder="ID Paseczka (np. PAS-001)" class="w-1/2 text-sm border rounded-lg p-2 uppercase">
+                                <input type="number" id="recharge-amount" placeholder="Żetony" class="w-1/4 text-sm border rounded-lg p-2">
+                                <button onclick="handleRecharge()" class="w-1/4 bg-slate-800 text-white text-xs rounded-lg font-medium hover:bg-slate-700">Doładuj</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Column 2 & 3: Gastro Menu & Order Ticket -->
+                    <div class="lg:col-span-2 bg-white p-5 rounded-xl shadow-sm border border-slate-200 grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Gastro Menu Options -->
+                        <div>
+                            <h3 class="text-lg font-semibold text-slate-800 mb-3 flex items-center gap-2">
+                                <i class="fa-solid fa-burger text-amber-500"></i> Menu Strefy Gastro
+                            </h3>
+                            <div class="space-y-2" id="gastro-menu-items">
+                                <!-- JS Populated Menu Items -->
+                            </div>
+                        </div>
+
+                        <!-- Current Ticket Order -->
+                        <div class="flex flex-col justify-between bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <div>
+                                <div class="flex justify-between items-center border-b pb-2 mb-3">
+                                    <h4 class="font-bold text-slate-700">Nowe Zamówienie Gastro</h4>
+                                    <span class="text-xs text-slate-400" id="current-time-display">--:--</span>
+                                </div>
+                                <div id="order-ticket-list" class="space-y-2 text-sm max-h-56 overflow-y-auto mb-3">
+                                    <p class="text-slate-400 text-xs italic text-center py-6">Brak pozycji w zamówieniu</p>
+                                </div>
+                            </div>
+
+                            <div class="border-t border-slate-300 pt-3 space-y-3">
+                                <div class="flex justify-between text-base font-bold text-slate-800">
+                                    <span>Razem do zapłaty:</span>
+                                    <span id="order-total-price">0.00 PLN</span>
+                                </div>
+                                <button onclick="submitGastroOrder()" id="btn-submit-order" disabled class="w-full bg-emerald-600 hover:bg-emerald-700 disabled:bg-slate-300 text-white font-medium py-2.5 rounded-lg text-sm transition">
+                                    <i class="fa-solid fa-receipt mr-1"></i> Finalizuj Zamówienie
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==================== 2. KUCHARZ SCREEN ==================== -->
+            <section id="screen-kucharz" class="space-y-6 hidden">
+                <div class="flex justify-between items-center border-b pb-4">
+                    <div>
+                        <h2 class="text-2xl font-bold text-slate-800">Kucharz - System Zamówień (KDS)</h2>
+                        <p class="text-sm text-slate-500">Realizacja posiłków w strefie gastronomicznej</p>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span class="text-xs font-semibold bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full">Klucz Kuchni: Aktywny</span>
+                    </div>
+                </div>
+
+                <!-- Orders Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="kitchen-orders-grid">
+                    <!-- Populated dynamically via JS -->
+                </div>
+            </section>
+
+            <!-- ==================== 3. TECHNIK SCREEN ==================== -->
+            <section id="screen-technik" class="space-y-6 hidden">
+                <div class="flex justify-between items-center border-b pb-4">
+                    <div>
+                        <h2 class="text-2xl font-bold text-slate-800">Panel Technika - Stan Atrakcji</h2>
+                        <p class="text-sm text-slate-500">Zarządzanie stanem technicznym 10 atrakcji w parku</p>
+                    </div>
+                    <div class="text-xs bg-amber-50 text-amber-800 border border-amber-200 px-3 py-1.5 rounded-lg">
+                        <i class="fa-solid fa-triangle-exclamation mr-1"></i> Zmiana stanu z "Uszkodzona" wymaga uprawnień technika.
+                    </div>
+                </div>
+
+                <!-- Attractions Table / Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="attractions-grid">
+                    <!-- Populated dynamically via JS -->
+                </div>
+            </section>
+
+            <!-- ==================== 4. MENEDŻER SCREEN ==================== -->
+            <section id="screen-menedzer" class="space-y-6 hidden">
+                <div class="flex justify-between items-center border-b pb-4">
+                    <div>
+                        <h2 class="text-2xl font-bold text-slate-800">Menedżer - Harmonogram Pracowników</h2>
+                        <p class="text-sm text-slate-500">Tworzenie i podgląd grafik pracy personelu (30 osób)</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <!-- Add Shift Form -->
+                    <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                        <h3 class="text-lg font-semibold text-slate-800 flex items-center gap-2">
+                            <i class="fa-solid fa-calendar-plus text-brand-600"></i> Przypisz Pracownika
+                        </h3>
+                        
+                        <form onsubmit="handleAssignSchedule(event)" class="space-y-3">
+                            <div>
+                                <label class="block text-xs font-medium text-slate-600 mb-1">Pracownik</label>
+                                <select id="sch-employee" class="w-full text-sm border-slate-300 border rounded-lg p-2.5">
+                                    <option value="Jan Kowalski (Kasjer)">Jan Kowalski (Kasjer)</option>
+                                    <option value="Anna Nowak (Opiekun)">Anna Nowak (Opiekun)</option>
+                                    <option value="Piotr Bartosiewicz (Technik)">Piotr Wiśniewski (Technik)</option>
+                                    <option value="Maria Borowicz (Kucharz)">Maria Zielińska (Kucharz)</option>
+                                    <option value="Tomasz Kamiński (Sprzątacz)">Tomasz Kamiński (Sprzątacz)</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-medium text-slate-600 mb-1">Miejsce / Atrakcja</label>
+                                <select id="sch-attraction" class="w-full text-sm border-slate-300 border rounded-lg p-2.5">
+                                    <option value="Kasa Główna">Kasa Główna</option>
+                                    <option value="Strefa Gastro">Strefa Gastro</option>
+                                    <option value="Diabelski Młyn">Diabelski Młyn</option>
+                                    <option value="Kolejka Górska 'Ukiel'">Kolejka Górska 'Ukiel'</option>
+                                    <option value="Autodrom">Autodrom</option>
+                                    <option value="Dom Strachów">Dom Strachów</option>
+                                </select>
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-2">
+                                <div>
+                                    <label class="block text-xs font-medium text-slate-600 mb-1">Godz. Od</label>
+                                    <input type="time" id="sch-time-from" value="10:00" class="w-full text-sm border rounded-lg p-2">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-medium text-slate-600 mb-1">Godz. Do</label>
+                                    <input type="time" id="sch-time-to" value="18:00" class="w-full text-sm border rounded-lg p-2">
+                                </div>
+                            </div>
+
+                            <button type="submit" class="w-full bg-slate-800 hover:bg-slate-900 text-white font-medium py-2.5 rounded-lg text-sm transition">
+                                Zapisz w Harmonogramie
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Schedule List -->
+                    <div class="lg:col-span-2 bg-white p-5 rounded-xl shadow-sm border border-slate-200">
+                        <h3 class="text-lg font-semibold text-slate-800 mb-4">Aktualny Grafik Pracowników</h3>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left text-sm">
+                                <thead class="bg-slate-50 text-slate-500 uppercase text-xs border-b">
+                                    <tr>
+                                        <th class="py-3 px-4">Pracownik</th>
+                                        <th class="py-3 px-4">Stanowisko / Miejsce</th>
+                                        <th class="py-3 px-4">Godziny</th>
+                                        <th class="py-3 px-4 text-right">Akcja</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="schedule-table-body" class="divide-y divide-slate-100">
+                                    <!-- Populated dynamically -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==================== 5. GOŚĆ / BRAMKA SCREEN ==================== -->
+            <section id="screen-gost" class="space-y-6 hidden">
+                <div class="flex justify-between items-center border-b pb-4">
+                    <div>
+                        <h2 class="text-2xl font-bold text-slate-800">Symulator Bramki przy Atrakcji</h2>
+                        <p class="text-sm text-slate-500">Weryfikacja paseczka i wpuszczanie gościa na teren atrakcji</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+                    <!-- Gate Control Panel -->
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                        <h3 class="text-lg font-semibold text-slate-800 border-b pb-2">Przyłóż Paseczek do Czytnika</h3>
+                        
+                        <div>
+                            <label class="block text-xs font-medium text-slate-600 mb-1">Wybierz Atrakcję</label>
+                            <select id="gate-attraction-select" class="w-full border rounded-lg p-2.5 text-sm font-medium">
+                                <!-- Populated dynamically -->
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-medium text-slate-600 mb-1">ID Paseczka (RFID)</label>
+                            <div class="flex gap-2">
+                                <input type="text" id="gate-tag-input" placeholder="np. PAS-001" value="PAS-001" class="flex-grow border rounded-lg p-2.5 uppercase font-mono">
+                                <button onclick="scanWristband()" class="bg-brand-600 text-white px-5 rounded-lg text-sm font-medium hover:bg-brand-700">Skanuj</button>
+                            </div>
+                        </div>
+
+                        <!-- Quick Tag helper buttons -->
+                        <div class="pt-2">
+                            <p class="text-xs text-slate-400 mb-1">Dostępne paseczki w bazie (kliknij by wkleić):</p>
+                            <div class="flex flex-wrap gap-1.5" id="preset-tags">
+                                <!-- Populated dynamically -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Turnstile Visualizer -->
+                    <div id="gate-status-card" class="bg-slate-900 text-white p-6 rounded-xl flex flex-col items-center justify-center text-center space-y-4 transition-all duration-300">
+                        <div id="gate-icon-container" class="w-20 h-20 rounded-full bg-slate-800 flex items-center justify-center text-3xl text-slate-400 border-2 border-slate-700">
+                            <i class="fa-solid fa-lock"></i>
+                        </div>
+                        <div>
+                            <h4 id="gate-status-text" class="text-xl font-bold">Bramka Zablokowana</h4>
+                            <p id="gate-subtext" class="text-xs text-slate-400 mt-1">Oczekiwanie na przyłożenie paseczka...</p>
+                        </div>
+                        <div id="gate-account-info" class="text-xs bg-slate-800 p-3 rounded-lg border border-slate-700 w-full hidden text-left space-y-1">
+                            <!-- JS injected info -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-white border-t border-slate-200 mt-auto py-4 text-center text-xs text-slate-500">
+            <p>Projektowanie Systemów Informatycznych - UWM Olsztyn &copy; 2026 Park Rozrywki System</p>
+        </footer>
+
+        <!-- JavaScript Application Logic -->
+        <script>
+            // ==========================================
+            // STATE MANAGEMENT & MOCK DATA
+            // ==========================================
+
+            const GASTRO_MENU = [
+                { id: 'm1', name: 'Zapiekanka tradycyjna', price: 18.00, icon: 'fa-bread-slice' },
+                { id: 'm2', name: 'Frytki duże z sosami', price: 14.00, icon: 'fa-bowl-rice' },
+                { id: 'm3', name: 'Hot Dog amerykański', price: 15.00, icon: 'fa-hotdog' },
+                { id: 'm4', name: 'Lody włoskie (dwusmak)', price: 10.00, icon: 'fa-ice-cream' },
+                { id: 'm5', name: 'Napój gazowany 0.5L', price: 8.00, icon: 'fa-bottle-water' },
+                { id: 'm6', name: 'Kawa Espresso / Cappuccino', price: 12.00, icon: 'fa-mug-hot' }
+            ];
+
+            let state = {
+                // Wristbands / Passes in database
+                wristbands: {
+                    'PAS-001': { type: 'tokens', balance: 12, owner: 'Jan Kowalski' },
+                    'PAS-002': { type: 'tokens', balance: 1, owner: 'Anna Nowak' },
+                    'PAS-003': { type: 'pass', balance: 'Karnet Całodniowy', owner: 'Piotr Zieliński' }
+                },
+                // Gastro Orders
+                orders: [
+                    { id: 101, items: [{ name: 'Zapiekanka tradycyjna', qty: 2 }, { name: 'Napój gazowany 0.5L', qty: 2 }], status: 'W trakcie', time: '12:15' },
+                    { id: 102, items: [{ name: 'Frytki duże z sosami', qty: 1 }], status: 'Oczekujące', time: '12:22' }
+                ],
+                // 10 Park Attractions
+                attractions: [
+                    { id: 1, name: "Diabelski Młyn", cost: 3, status: "Działająca" },
+                    { id: 2, name: "Kolejka Górska 'Ukiel'", cost: 5, status: "Działająca" },
+                    { id: 3, name: "Autodrom", cost: 2, status: "W trakcie naprawy" },
+                    { id: 4, name: "Dom Strachów", cost: 4, status: "Uszkodzona" },
+                    { id: 5, name: "Karuzela Wenecka", cost: 2, status: "Działająca" },
+                    { id: 6, name: "Spływ Rzeczny", cost: 3, status: "Działająca" },
+                    { id: 7, name: "Strzelnica Laserowa", cost: 2, status: "Działająca" },
+                    { id: 8, name: "Mini Coaster dla dzieci", cost: 2, status: "Działająca" },
+                    { id: 9, name: "Trampoliny", cost: 1, status: "Zamknięta" },
+                    { id: 10, name: "Wieża Swobodnego Spadku", cost: 4, status: "Działająca" }
+                ],
+                // Schedules
+                schedules: [
+                    { id: 1, employee: "Jan Kowalski (Kasjer)", location: "Kasa Główna", hours: "10:00 - 18:00" },
+                    { id: 2, employee: "Anna Nowak (Opiekun)", location: "Diabelski Młyn", hours: "10:00 - 18:00" },
+                    { id: 3, employee: "Piotr Wiśniewski (Technik)", location: "Cały Park", hours: "09:00 - 17:00" },
+                    { id: 4, employee: "Maria Zielińska (Kucharz)", location: "Strefa Gastro", hours: "10:00 - 19:00" }
+                ],
+                // Current Ticket being built in Cashier Screen
+                currentCart: []
+            };
+
+            // ==========================================
+            // INITIALIZATION & TAB SWITCHING
+            // ==========================================
+
+            window.onload = function() {
+                renderGastroMenu();
+                renderKitchenOrders();
+                renderAttractions();
+                renderSchedules();
+                setupGateAttractionSelect();
+                updatePresetTagButtons();
+
+                // Clock update
+                setInterval(() => {
+                    const now = new Date();
+                    const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                    const clockEl = document.getElementById('current-time-display');
+                    if (clockEl) clockEl.innerText = timeStr;
+                }, 1000);
+            };
+
+            function switchRole(role) {
+                // Hide all screens
+                const screens = ['kasjer', 'kucharz', 'technik', 'menedzer', 'gost'];
+                screens.forEach(s => {
+                    document.getElementById(`screen-${s}`).classList.add('hidden');
+                    
+                    // Desktop nav tabs update
+                    const tab = document.getElementById(`tab-${s}`);
+                    if (tab) {
+                        tab.classList.remove('tab-active');
+                        tab.classList.add('tab-inactive');
+                    }
+
+                    // Mobile nav tabs update
+                    const mtab = document.getElementById(`mtab-${s}`);
+                    if (mtab) {
+                        mtab.classList.remove('bg-brand-600', 'text-white');
+                        mtab.classList.add('text-slate-300');
+                    }
+                });
+
+                // Show selected screen
+                document.getElementById(`screen-${role}`).classList.remove('hidden');
+
+                // Activate Tab
+                const activeTab = document.getElementById(`tab-${role}`);
+                if (activeTab) {
+                    activeTab.classList.remove('tab-inactive');
+                    activeTab.classList.add('tab-active');
+                }
+
+                const activeMTab = document.getElementById(`mtab-${role}`);
+                if (activeMTab) {
+                    activeMTab.classList.add('bg-brand-600', 'text-white');
+                    activeMTab.classList.remove('text-slate-300');
+                }
+            }
+
+            function showToast(message, type = 'info') {
+                const container = document.getElementById('toast-container');
+                const toast = document.createElement('div');
+                
+                let bg = 'bg-slate-800';
+                if (type === 'success') bg = 'bg-emerald-600';
+                if (type === 'error') bg = 'bg-rose-600';
+                if (type === 'warning') bg = 'bg-amber-600';
+
+                toast.className = `${bg} text-white text-xs px-4 py-3 rounded-lg shadow-xl flex items-center gap-2 border border-white/10 animate-bounce`;
+                toast.innerHTML = `<i class="fa-solid fa-circle-info"></i> <span>${message}</span>`;
+                
+                container.appendChild(toast);
+                setTimeout(() => {
+                    toast.remove();
+                }, 3000);
+            }
+
+            // ==========================================
+            // 1. KASJER LOGIC
+            // ==========================================
+
+            function togglePassInputs() {
+                const type = document.getElementById('pass-type').value;
+                if (type === 'tokens') {
+                    document.getElementById('token-input-group').classList.remove('hidden');
+                    document.getElementById('pass-input-group').classList.add('hidden');
+                } else {
+                    document.getElementById('token-input-group').classList.add('hidden');
+                    document.getElementById('pass-input-group').classList.remove('hidden');
+                }
+            }
+
+            function handleWristbandSale(e) {
+                e.preventDefault();
+                const type = document.getElementById('pass-type').value;
+                const resId = document.getElementById('res-search-id').value.trim();
+                const newTagId = 'PAS-00' + (Object.keys(state.wristbands).length + 1);
+
+                if (type === 'tokens') {
+                    const count = parseInt(document.getElementById('token-count').value) || 0;
+                    state.wristbands[newTagId] = { type: 'tokens', balance: count, owner: resId ? `Rezerwacja ${resId}` : 'Gość' };
+                    showToast(`Wydano Nowy Paseczek [${newTagId}] z ${count} żetonami!`, 'success');
+                } else {
+                    state.wristbands[newTagId] = { type: 'pass', balance: 'Karnet Całodniowy', owner: resId ? `Rezerwacja ${resId}` : 'Gość' };
+                    showToast(`Wydano Nowy Paseczek [${newTagId}] z Karnetem Czasowym!`, 'success');
+                }
+
+                document.getElementById('res-search-id').value = '';
+                updatePresetTagButtons();
+            }
+
+            function handleRecharge() {
+                const tag = document.getElementById('recharge-tag').value.trim().toUpperCase();
+                const amount = parseInt(document.getElementById('recharge-amount').value) || 0;
+
+                if (!state.wristbands[tag]) {
+                    showToast(`Paseczek ${tag} nie istnieje w systemie!`, 'error');
+                    return;
+                }
+
+                if (state.wristbands[tag].type === 'pass') {
+                    showToast(`Paseczek ${tag} posiada aktywny karnet czasowy!`, 'warning');
+                    return;
+                }
+
+                state.wristbands[tag].balance += amount;
+                showToast(`Doładowano ${amount} żetonów do paseczka ${tag}. Aktualny stan: ${state.wristbands[tag].balance}`, 'success');
+                document.getElementById('recharge-tag').value = '';
+                document.getElementById('recharge-amount').value = '';
+            }
+
+            function renderGastroMenu() {
+                const container = document.getElementById('gastro-menu-items');
+                container.innerHTML = GASTRO_MENU.map(item => `
+                    <div class="flex items-center justify-between p-2.5 rounded-lg border border-slate-100 hover:border-slate-300 hover:bg-slate-50 transition">
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 rounded bg-amber-100 text-amber-700 flex items-center justify-center text-xs">
+                                <i class="fa-solid ${item.icon}"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm font-semibold text-slate-800">${item.name}</p>
+                                <p class="text-xs text-slate-500">${item.price.toFixed(2)} PLN</p>
+                            </div>
+                        </div>
+                        <button onclick="addToOrder('${item.id}')" class="bg-slate-800 text-white p-2 rounded-md hover:bg-brand-600 text-xs transition">
+                            <i class="fa-solid fa-plus"></i>
+                        </button>
+                    </div>
+                `).join('');
+            }
+
+            function addToOrder(itemId) {
+                const menuItem = GASTRO_MENU.find(m => m.id === itemId);
+                const existing = state.currentCart.find(c => c.id === itemId);
+
+                if (existing) {
+                    existing.qty++;
+                } else {
+                    state.currentCart.push({ ...menuItem, qty: 1 });
+                }
+                renderCurrentTicket();
+            }
+
+            function updateCartQty(itemId, change) {
+                const item = state.currentCart.find(c => c.id === itemId);
+                if (item) {
+                    item.qty += change;
+                    if (item.qty <= 0) {
+                        state.currentCart = state.currentCart.filter(c => c.id !== itemId);
+                    }
+                }
+                renderCurrentTicket();
+            }
+
+            function renderCurrentTicket() {
+                const list = document.getElementById('order-ticket-list');
+                const submitBtn = document.getElementById('btn-submit-order');
+                const totalEl = document.getElementById('order-total-price');
+
+                if (state.currentCart.length === 0) {
+                    list.innerHTML = `<p class="text-slate-400 text-xs italic text-center py-6">Brak pozycji w zamówieniu</p>`;
+                    submitBtn.disabled = true;
+                    totalEl.innerText = '0.00 PLN';
+                    return;
+                }
+
+                submitBtn.disabled = false;
+                let total = 0;
+
+                list.innerHTML = state.currentCart.map(item => {
+                    const subtotal = item.price * item.qty;
+                    total += subtotal;
+                    return `
+                        <div class="flex items-center justify-between border-b border-slate-200 pb-1.5">
+                            <div class="flex-grow pr-2">
+                                <p class="text-xs font-medium text-slate-800">${item.name}</p>
+                                <p class="text-[10px] text-slate-500">${item.price.toFixed(2)} PLN/szt.</p>
+                            </div>
+                            <div class="flex items-center gap-1.5">
+                                <button onclick="updateCartQty('${item.id}', -1)" class="w-5 h-5 bg-slate-200 rounded flex items-center justify-center text-xs text-slate-700 font-bold">-</button>
+                                <span class="text-xs font-bold w-4 text-center">${item.qty}</span>
+                                <button onclick="updateCartQty('${item.id}', 1)" class="w-5 h-5 bg-slate-200 rounded flex items-center justify-center text-xs text-slate-700 font-bold">+</button>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+
+                totalEl.innerText = `${total.toFixed(2)} PLN`;
+            }
+
+            function submitGastroOrder() {
+                if (state.currentCart.length === 0) return;
+
+                const now = new Date();
+                const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                
+                const newOrder = {
+                    id: 100 + state.orders.length + 1,
+                    items: state.currentCart.map(c => ({ name: c.name, qty: c.qty })),
+                    status: 'Oczekujące',
+                    time: timeStr
+                };
+
+                state.orders.push(newOrder);
+                state.currentCart = [];
+                renderCurrentTicket();
+                renderKitchenOrders();
+                showToast(`Zamówienie #${newOrder.id} wysłane do kuchni!`, 'success');
+            }
+
+            // ==========================================
+            // 2. KUCHARZ LOGIC
+            // ==========================================
+
+            function renderKitchenOrders() {
+                const grid = document.getElementById('kitchen-orders-grid');
+                if (state.orders.length === 0) {
+                    grid.innerHTML = `<div class="col-span-full text-center py-12 text-slate-400">Brak aktywnych zamówień kuchennych</div>`;
+                    return;
+                }
+
+                grid.innerHTML = state.orders.map(order => {
+                    let statusBadge = '';
+                    if (order.status === 'Oczekujące') statusBadge = '<span class="bg-amber-100 text-amber-800 text-xs px-2 py-0.5 rounded font-bold">Oczekuje</span>';
+                    if (order.status === 'W trakcie') statusBadge = '<span class="bg-blue-100 text-blue-800 text-xs px-2 py-0.5 rounded font-bold">W trakcie</span>';
+                    if (order.status === 'Zrealizowane') statusBadge = '<span class="bg-emerald-100 text-emerald-800 text-xs px-2 py-0.5 rounded font-bold">Gotowe</span>';
+                    if (order.status === 'Nieodebrane') statusBadge = '<span class="bg-rose-100 text-rose-800 text-xs px-2 py-0.5 rounded font-bold">Nieodebrane</span>';
+
+                    return `
+                        <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 flex flex-col justify-between space-y-3">
+                            <div>
+                                <div class="flex justify-between items-center border-b pb-2 mb-2">
+                                    <span class="font-bold text-slate-800">Zamówienie #${order.id}</span>
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-xs text-slate-400">${order.time}</span>
+                                        ${statusBadge}
+                                    </div>
+                                </div>
+                                <ul class="text-sm space-y-1 my-3">
+                                    ${order.items.map(i => `<li class="flex justify-between"><span class="text-slate-700">${i.name}</span> <span class="font-bold text-slate-900">x${i.qty}</span></li>`).join('')}
+                                </ul>
+                            </div>
+
+                            <div class="pt-2 border-t flex gap-1.5">
+                                <button onclick="updateOrderStatus(${order.id}, 'W trakcie')" class="flex-1 bg-blue-50 text-blue-700 hover:bg-blue-100 text-xs py-2 rounded font-medium">
+                                    W trakcie
+                                </button>
+                                <button onclick="updateOrderStatus(${order.id}, 'Zrealizowane')" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white text-xs py-2 rounded font-medium">
+                                    Gotowe
+                                </button>
+                                <button onclick="updateOrderStatus(${order.id}, 'Nieodebrane')" class="bg-slate-100 text-slate-600 hover:bg-slate-200 text-xs px-2 rounded font-medium" title="Nieodebrane">
+                                    <i class="fa-solid fa-xmark"></i>
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            }
+
+            function updateOrderStatus(orderId, newStatus) {
+                const order = state.orders.find(o => o.id === orderId);
+                if (order) {
+                    order.status = newStatus;
+                    renderKitchenOrders();
+                    showToast(`Zamówienie #${orderId} zmieniło status na: ${newStatus}`, 'info');
+                }
+            }
+
+            // ==========================================
+            // 3. TECHNIK LOGIC
+            // ==========================================
+
+            function renderAttractions() {
+                const grid = document.getElementById('attractions-grid');
+                grid.innerHTML = state.attractions.map(attr => {
+                    let badgeClass = '';
+                    if (attr.status === 'Działająca') badgeClass = 'bg-emerald-100 text-emerald-800 border-emerald-300';
+                    if (attr.status === 'Uszkodzona') badgeClass = 'bg-rose-100 text-rose-800 border-rose-300';
+                    if (attr.status === 'W trakcie naprawy') badgeClass = 'bg-amber-100 text-amber-800 border-amber-300';
+                    if (attr.status === 'Zamknięta') badgeClass = 'bg-slate-100 text-slate-700 border-slate-300';
+
+                    return `
+                        <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 flex flex-col justify-between">
+                            <div>
+                                <div class="flex justify-between items-start mb-2">
+                                    <h4 class="font-bold text-slate-800 text-base">${attr.id}. ${attr.name}</h4>
+                                    <span class="text-xs font-semibold px-2 py-0.5 rounded border ${badgeClass}">${attr.status}</span>
+                                </div>
+                                <p class="text-xs text-slate-500 mb-4">Koszt wejścia: <strong class="text-slate-700">${attr.cost} żetony</strong></p>
+                            </div>
+
+                            <div class="pt-3 border-t border-slate-100 space-y-2">
+                                <label class="block text-[10px] uppercase font-bold text-slate-400">Zmień status (Uprawnienia Technika)</label>
+                                <div class="grid grid-cols-2 gap-1.5">
+                                    <button onclick="changeAttractionStatus(${attr.id}, 'W trakcie naprawy')" class="bg-amber-50 hover:bg-amber-100 text-amber-800 text-[11px] py-1.5 rounded font-medium border border-amber-200">
+                                        Rozpocznij Naprawę
+                                    </button>
+                                    <button onclick="changeAttractionStatus(${attr.id}, 'Działająca')" class="bg-emerald-50 hover:bg-emerald-100 text-emerald-800 text-[11px] py-1.5 rounded font-medium border border-emerald-200">
+                                        Oznacz jako Sprawna
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            }
+
+            function changeAttractionStatus(attrId, newStatus) {
+                const attr = state.attractions.find(a => a.id === attrId);
+                if (attr) {
+                    // Rule: Technician only can switch "W trakcie naprawy" or "Uszkodzona" -> "Działająca"
+                    attr.status = newStatus;
+                    renderAttractions();
+                    setupGateAttractionSelect();
+                    showToast(`Atrakcja '${attr.name}' ma teraz status: ${newStatus}`, 'success');
+                }
+            }
+
+            // ==========================================
+            // 4. MENEDŻER LOGIC
+            // ==========================================
+
+            function renderSchedules() {
+                const tbody = document.getElementById('schedule-table-body');
+                tbody.innerHTML = state.schedules.map(sch => `
+                    <tr class="hover:bg-slate-50">
+                        <td class="py-3 px-4 font-semibold text-slate-800">${sch.employee}</td>
+                        <td class="py-3 px-4 text-slate-600">${sch.location}</td>
+                        <td class="py-3 px-4 text-slate-600">${sch.hours}</td>
+                        <td class="py-3 px-4 text-right">
+                            <button onclick="deleteSchedule(${sch.id})" class="text-rose-600 hover:text-rose-800 text-xs font-medium">
+                                <i class="fa-solid fa-trash mr-1"></i> Usuń
+                            </button>
+                        </td>
+                    </tr>
+                `).join('');
+            }
+
+            function handleAssignSchedule(e) {
+                e.preventDefault();
+                const emp = document.getElementById('sch-employee').value;
+                const loc = document.getElementById('sch-attraction').value;
+                const from = document.getElementById('sch-time-from').value;
+                const to = document.getElementById('sch-time-to').value;
+
+                // Conflict Check
+                const conflict = state.schedules.find(s => s.employee === emp);
+                if (conflict) {
+                    if (!confirm(`Ostrzeżenie: Pracownik ${emp} ma już przypisanie (${conflict.location}). Czy chcesz mimo to dopisać nowe stanowisko?`)) {
+                        return;
+                    }
+                }
+
+                state.schedules.push({
+                    id: state.schedules.length + 1,
+                    employee: emp,
+                    location: loc,
+                    hours: `${from} - ${to}`
+                });
+
+                renderSchedules();
+                showToast(`Dodano nowy grafik dla ${emp}!`, 'success');
+            }
+
+            function deleteSchedule(id) {
+                state.schedules = state.schedules.filter(s => s.id !== id);
+                renderSchedules();
+                showToast('Wpis usunięty z harmonogramu', 'info');
+            }
+
+            // ==========================================
+            // 5. GOŚĆ / BRAMKA LOGIC
+            // ==========================================
+
+            function setupGateAttractionSelect() {
+                const select = document.getElementById('gate-attraction-select');
+                select.innerHTML = state.attractions.map(a => `
+                    <option value="${a.id}">${a.name} (${a.cost} żetonów) - [${a.status}]</option>
+                `).join('');
+            }
+
+            function updatePresetTagButtons() {
+                const container = document.getElementById('preset-tags');
+                container.innerHTML = Object.keys(state.wristbands).map(tag => `
+                    <button onclick="document.getElementById('gate-tag-input').value='${tag}'" class="bg-slate-100 hover:bg-slate-200 text-slate-700 text-[11px] px-2 py-1 rounded font-mono border">
+                        ${tag} (${state.wristbands[tag].type === 'pass' ? 'Karnet' : state.wristbands[tag].balance + 'ż'})
+                    </button>
+                `).join('');
+            }
+
+            function scanWristband() {
+                const tagInput = document.getElementById('gate-tag-input').value.trim().toUpperCase();
+                const attractionId = parseInt(document.getElementById('gate-attraction-select').value);
+                const attraction = state.attractions.find(a => a.id === attractionId);
+
+                const statusCard = document.getElementById('gate-status-card');
+                const iconContainer = document.getElementById('gate-icon-container');
+                const statusText = document.getElementById('gate-status-text');
+                const subtext = document.getElementById('gate-subtext');
+                const infoBox = document.getElementById('gate-account-info');
+
+                // Reset visual states
+                statusCard.className = "bg-slate-900 text-white p-6 rounded-xl flex flex-col items-center justify-center text-center space-y-4 transition-all duration-300";
+                
+                // Check attraction operational status
+                if (attraction.status !== 'Działająca') {
+                    statusCard.classList.add('bg-rose-950', 'border-rose-600');
+                    iconContainer.className = "w-20 h-20 rounded-full bg-rose-900 flex items-center justify-center text-3xl text-rose-200 border-2 border-rose-500";
+                    iconContainer.innerHTML = `<i class="fa-solid fa-ban"></i>`;
+                    statusText.innerText = "ATRAKCJA NIEDOSTĘPNA";
+                    subtext.innerText = `Atrakcja jest obecnie w stanie: ${attraction.status}`;
+                    infoBox.classList.add('hidden');
+                    return;
+                }
+
+                const wristband = state.wristbands[tagInput];
+
+                if (!wristband) {
+                    statusCard.classList.add('bg-rose-950');
+                    iconContainer.className = "w-20 h-20 rounded-full bg-rose-900 flex items-center justify-center text-3xl text-rose-200 border-2 border-rose-500";
+                    iconContainer.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i>`;
+                    statusText.innerText = "NIEZNANA OPASKA";
+                    subtext.innerText = `Brak ID ${tagInput} w bazie danych parku.`;
+                    infoBox.classList.add('hidden');
+                    return;
+                }
+
+                // Check wristband validity/balance
+                if (wristband.type === 'pass') {
+                    // Time pass -> Always allow
+                    statusCard.classList.add('bg-emerald-950');
+                    iconContainer.className = "w-20 h-20 rounded-full bg-emerald-600 flex items-center justify-center text-3xl text-white border-2 border-emerald-400 animate-pulse";
+                    iconContainer.innerHTML = `<i class="fa-solid fa-door-open"></i>`;
+                    statusText.innerText = "BRAMKA OTWARTA";
+                    subtext.innerText = "Życzymy miłej zabawy!";
+
+                    infoBox.classList.remove('hidden');
+                    infoBox.innerHTML = `
+                        <p><strong>Paseczek:</strong> ${tagInput} (${wristband.owner})</p>
+                        <p><strong>Typ:</strong> Karnet Czasowy (Nielimitowany)</p>
+                        <p><strong>Wejście:</strong> ${attraction.name}</p>
+                    `;
+                } else {
+                    // Tokens pass -> Deduction check
+                    if (wristband.balance >= attraction.cost) {
+                        wristband.balance -= attraction.cost;
+                        
+                        statusCard.classList.add('bg-emerald-950');
+                        iconContainer.className = "w-20 h-20 rounded-full bg-emerald-600 flex items-center justify-center text-3xl text-white border-2 border-emerald-400 animate-pulse";
+                        iconContainer.innerHTML = `<i class="fa-solid fa-door-open"></i>`;
+                        statusText.innerText = "BRAMKA OTWARTA";
+                        subtext.innerText = `Pobrano ${attraction.cost} żetonów. Zezwolono na wejście.`;
+
+                        infoBox.classList.remove('hidden');
+                        infoBox.innerHTML = `
+                            <p><strong>Paseczek:</strong> ${tagInput} (${wristband.owner})</p>
+                            <p><strong>Pobrano:</strong> ${attraction.cost} żetonów</p>
+                            <p><strong>Pozostały stan:</strong> <span class="text-emerald-400 font-bold">${wristband.balance} żetonów</span></p>
+                        `;
+                        updatePresetTagButtons();
+                    } else {
+                        statusCard.classList.add('bg-amber-950');
+                        iconContainer.className = "w-20 h-20 rounded-full bg-amber-900 flex items-center justify-center text-3xl text-amber-200 border-2 border-amber-500";
+                        iconContainer.innerHTML = `<i class="fa-solid fa-coins"></i>`;
+                        statusText.innerText = "BRAK ŻETONÓW";
+                        subtext.innerText = `Wymagane: ${attraction.cost} żetony. Posiadasz: ${wristband.balance}`;
+
+                        infoBox.classList.remove('hidden');
+                        infoBox.innerHTML = `
+                            <p><strong>Paseczek:</strong> ${tagInput} (${wristband.owner})</p>
+                            <p class="text-amber-300">Prosimy doładować żetony w Kasie Głównej.</p>
+                        `;
+                    }
+                }
+            }
+        </script>
+    </body>
+    </html>
+
+    Na podstawie przesłanej instrukcji i kodu przygotowałem Ci gotową Kartę Projektu do laboratorium 01, zgodną z wymaganiami prowadzącego.
+
+    Jako temat projektu przyjmujemy aplikację Park Rozrywki „Wirgo” – System Obsługi i Zarządzania Parkiem Rozrywki.
+
+    Dokumentacja będzie oparta bezpośrednio na funkcjonalnościach z Twojego kodu HTML i JavaScript, czyli:
+
+        sprzedaży biletów, karnetów i opasek z żetonami;
+
+        doładowywaniu opasek RFID;
+
+        obsłudze zamówień gastronomicznych;
+
+        zarządzaniu zamówieniami przez kucharza;
+
+        kontroli stanu technicznego atrakcji;
+
+        układaniu grafików pracowników;
+
+        weryfikacji opasek i wpuszczaniu gości na atrakcje.
+
+    Poniżej masz gotową treść do wklejenia do pliku README.md na GitHubie.
+    Pisanie
+    Park Rozrywki „Wirgo” – System Obsługi i Zarządzania Parkiem Rozrywki
+    1. Informacje o projekcie
+
+    Tytuł projektu: Park Rozrywki „Wirgo” – System Obsługi i Zarządzania Parkiem Rozrywki
+
+    Nazwa zespołu: Wirgo Team
+
+    Przedmiot: Inżynieria Oprogramowania
+
+    Laboratorium: 01
+
+    Prowadzący: Artur Samojluk
+    Skład zespołu
+    Dane	Osoba 1	Osoba 2
+    Imię i nazwisko	[Imię i nazwisko]	[Imię i nazwisko]
+    Numer indeksu	[Numer indeksu]	[Numer indeksu]
+    Grupa laboratoryjna	[Numer grupy]	[Numer grupy]
+    Konto GitHub	[Login GitHub]	[Login GitHub]
+    2. Pomysły na projekt
+
+    Rozważane pomysły:
+        System rezerwacji sal i pomieszczeń.
+        System zarządzania wypożyczalnią sprzętu.
+        System obsługi i zarządzania parkiem rozrywki.
+
+    Wybrany pomysł: System obsługi i zarządzania parkiem rozrywki „Wirgo”.
+
+    Wybrany temat pozwala na stworzenie aplikacji obejmującej kilka obszarów działalności parku, takich jak sprzedaż biletów, obsługa gastronomii, kontrola atrakcji oraz zarządzanie personelem.
+    3. Idea i problem projektu
+
+    Park rozrywki „Wirgo” to aplikacja informatyczna przeznaczona do kompleksowego zarządzania codziennym funkcjonowaniem parku rozrywki. Głównym problemem, który rozwiązuje projekt, jest konieczność koordynowania wielu procesów związanych z obsługą gości i pracowników. W tradycyjnym sposobie pracy sprzedaż biletów, kontrolowanie wejść na atrakcje, obsługa gastronomii oraz tworzenie grafików mogą być prowadzone za pomocą oddzielnych narzędzi lub dokumentów. Takie rozwiązanie utrudnia przepływ informacji i może powodować pomyłki. Nasza aplikacja umożliwia obsługę najważniejszych procesów w jednym wspólnym systemie. Z systemu będą korzystać kasjerzy, kucharze, technicy, menedżerowie oraz pracownicy odpowiedzialni za kontrolę wejść na atrakcje. Kasjer będzie mógł sprzedawać bilety i karnety, wydawać opaski RFID oraz doładowywać je żetonami. Kucharz otrzyma zamówienia gastronomiczne i będzie mógł aktualizować ich status. Technik będzie kontrolował stan atrakcji, a menedżer będzie zarządzał harmonogramem pracowników. Dzięki aplikacji pracownicy będą mieli łatwiejszy dostęp do aktualnych informacji, a obsługa parku stanie się bardziej uporządkowana.
+    4. Użytkownicy i scenariusz użycia
+    Główne grupy użytkowników
+        Kasjer – sprzedaje bilety, karnety i opaski, a także przyjmuje zamówienia gastronomiczne.
+        Kucharz – odbiera zamówienia i aktualizuje ich status.
+        Technik – sprawdza stan techniczny atrakcji i aktualizuje ich dostępność.
+        Menedżer – przydziela pracowników do stanowisk i tworzy harmonogramy pracy.
+        Pracownik bramki – sprawdza opaski RFID i kontroluje możliwość wejścia na atrakcje.
+    Przykładowy scenariusz użycia
+        Gość przychodzi do parku rozrywki „Wirgo”.
+        Kasjer wybiera rodzaj wejściówki i sprzedaje gościowi opaskę z określoną liczbą żetonów.
+        Gość wybiera atrakcję, z której chce skorzystać.
+        Pracownik bramki wybiera atrakcję w systemie i skanuje identyfikator opaski RFID.
+        System sprawdza, czy opaska istnieje w bazie i czy posiada wystarczającą liczbę żetonów.
+        System sprawdza również, czy wybrana atrakcja jest sprawna i dostępna.
+        Jeżeli wszystkie warunki są spełnione, system pobiera odpowiednią liczbę żetonów i zezwala na wejście.
+        Jeżeli warunki nie są spełnione, system wyświetla odpowiedni komunikat.
+    5. Zakres funkcjonalny
+    ID	Funkcjonalność	Zakres
+    F01	Użytkownik może sprzedawać bilety, karnety czasowe oraz wydawać opaski RFID z żetonami.	MVP
+    F02	Użytkownik może sprawdzać stan opaski i doładowywać ją dodatkowymi żetonami.	MVP
+    F03	Użytkownik może tworzyć zamówienia gastronomiczne i wysyłać je do kuchni.	MVP
+    F04	Użytkownik może przeglądać zamówienia gastronomiczne i zmieniać ich status.	MVP
+    F05	Użytkownik może sprawdzać stan techniczny atrakcji oraz zmieniać ich status.	MVP
+    F06	Użytkownik może przydzielać pracowników do określonych stanowisk i tworzyć harmonogramy pracy.	Rozszerzenie
+    F07	Użytkownik może weryfikować opaski RFID przy wejściu na atrakcje, a system może sprawdzać saldo żetonów i pobierać opłatę za wejście.	MVP
+    F08	Użytkownik może usuwać wpisy z harmonogramu pracowników.	Rozszerzenie
+    Funkcjonalności MVP – pierwsza wersja
+
+    W pierwszej wersji aplikacji zostaną zrealizowane:
+        F01 – sprzedaż biletów, karnetów i wydawanie opasek.
+        F02 – doładowywanie opasek żetonami.
+        F03 – tworzenie zamówień gastronomicznych.
+        F04 – obsługa i aktualizacja statusów zamówień.
+        F05 – kontrola stanu technicznego atrakcji.
+        F07 – weryfikacja opasek i kontrola wejścia na atrakcje.
+    Funkcjonalności rozszerzające
+        F06 – zarządzanie harmonogramem pracowników.
+        F08 – usuwanie wpisów z harmonogramu.
+    6. Elementy poza zakresem pierwszej wersji
+
+    W pierwszej wersji projektu nie będą realizowane:
+        Integracja z prawdziwymi czytnikami RFID i fizycznymi bramkami wejściowymi. W pierwszej wersji zostanie wykorzystana symulacja skanowania opasek.
+        Obsługa rzeczywistych płatności internetowych i integracja z bankami.
+        Aplikacja mobilna dla gości parku.
+        System rezerwacji atrakcji na konkretne godziny.
+    7. Organizacja współpracy
+
+    Projekt będzie realizowany przez dwuosobowy zespół Wirgo Team.
+    Wstępny podział zadań
+    Osoba	Zakres odpowiedzialności
+    Osoba 1	Przygotowanie interfejsu aplikacji, modułu kasjera, sprzedaży biletów i obsługi opasek RFID.
+    Osoba 2	Przygotowanie modułu gastronomii, panelu technika oraz zarządzania harmonogramem pracowników.
+    Obie osoby	Projektowanie funkcjonalności, testowanie aplikacji, aktualizacja dokumentacji i kontrola poprawności działania systemu.
+    Sposób komunikacji
+        Podstawowym miejscem komunikacji będzie LaboChat.com.
+        Do szybkich ustaleń będzie wykorzystywany komunikator internetowy.
+        Kod źródłowy oraz dokumentacja będą przechowywane we wspólnym repozytorium GitHub.
+        Każda osoba będzie odpowiedzialna za aktualizowanie dokumentacji dotyczącej wykonanych przez siebie zadań.
+        Ważne decyzje projektowe będą zapisywane w przestrzeni zespołu.
+    8. Zadania startowe zespołu
+    Zadanie	Osoba odpowiedzialna	Termin	Status
+    Przygotowanie opisu idei projektu	Osoba 1	[Data]	Wykonane
+    Opracowanie listy funkcjonalności	Osoba 2	[Data]	Wykonane
+    Utworzenie repozytorium GitHub i pliku README.md	Osoba 1	[Data]	Do wykonania
+    Przygotowanie przestrzeni zespołu na LaboChat.com i sprawdzenie dostępu	Osoba 2	[Data]	Do wykonania
+    Sprawdzenie poprawności dokumentacji i kodu	Obie osoby	[Data]	Do wykonania
+    9. Wykorzystywane technologie
+        HTML5 – struktura aplikacji.
+        CSS3 – stylizacja interfejsu.
+        Tailwind CSS – układ i wygląd elementów aplikacji.
+        JavaScript – logika działania aplikacji i obsługa funkcjonalności.
+        Font Awesome – ikony wykorzystywane w interfejsie.
+        Git – kontrola wersji projektu.
+        GitHub – przechowywanie kodu i dokumentacji.
+    10. Stan realizacji projektu
+
+    Projekt posiada przygotowany prototyp interfejsu użytkownika oraz podstawową logikę działania napisaną w HTML, CSS i JavaScript.
+
+    Aplikacja zawiera pięć głównych paneli:
+        Panel kasjera.
+        Panel kucharza.
+        Panel technika.
+        Panel menedżera.
+        Panel gościa i bramki wejściowej.
+
+    Dane w obecnej wersji są przykładowymi danymi przechowywanymi w pamięci aplikacji. Projekt nie posiada jeszcze połączenia z rzeczywistą bazą danych ani systemu logowania użytkowników. Funkcjonalności przedstawione w prototypie będą rozwijane i ulepszane podczas kolejnych laboratoriów.
+    11. Odnośniki do projektu
+        Repozytorium GitHub: [Wklej link do repozytorium]
+        Przestrzeń projektu LaboChat.com: [Wklej link do przestrzeni zespołu]
+
+    Projekt: Park Rozrywki „Wirgo”
+    Przedmiot: Inżynieria Oprogramowania
+    Laboratorium: 01
+    Prowadzący: Artur Samojluk
+    Co jeszcze musicie zrobić, żeby zaliczyć laboratorium?
+
+    Sama dokumentacja to nie wszystko. Instrukcja wymaga również wykonania kilku czynności na GitHubie i LaboChat.com.
+
+    Lista kontrolna
+
+    0 / 10 wykonanych
+    0%
+    Uzupełnić imiona, nazwiska, numery indeksów i grupę laboratoryjną.
+    Uzupełnić loginy GitHub obu osób.
+    Utworzyć publiczne repozytorium o nazwie wirgo.
+    Wkleić powyższą dokumentację do README.md.
+    Dodać drugą osobę jako współpracownika GitHub.
+    Każda osoba wykonuje przynajmniej jeden własny commit.
+    Utworzyć przestrzeń zespołu na LaboChat.com.
+    Dodać minimum 4 zadania i przydzielić je obu osobom.
+    Każda osoba dodaje przynajmniej jedno ustalenie lub aktualizację.
+    Uzupełnić linki GitHub i LaboChat.com w README.md.
+    Ważna uwaga dotycząca Twojego kodu
+
+    Twój kod HTML jest dobrym punktem wyjścia do tego projektu. Dokumentacja odpowiada temu, co faktycznie znajduje się w aplikacji. Zauważyłem jednak, że:
+
+        dane są przechowywane tymczasowo w JavaScript;
+
+        logika RFID jest symulowana;
+
+        nie ma jeszcze prawdziwego logowania i uprawnień;
+
+        grafik pracowników nie ma pełnej obsługi dat i zmian.
+
+    Nie trzeba tego wszystkiego dodawać na pierwsze laboratorium – można rozwijać projekt na kolejnych zajęciach.
+
+    Potrzebuję jeszcze tylko dwóch informacji: czy podasz mi imiona i nazwiska obu osób oraz numery indeksów? Wtedy będę mógł uzupełnić kartę projektu bez pozostawiania pustych pól.
+
+    this next pls
+    INŻYNIERIA OPROGRAMOWANIA LABORATORIUM 02
+    Prowadzący zajęcia: Artur Samojluk 1 / 3
+    Prowadzący zajęcia: Artur Samojluk
+    Road Map projektu
+    I iteracja projektu: v1. Plan widoków, struktury bazy danych i podstawowych funkcjonalności.
+    Cel ćwiczenia
+    Opracujecie mapę pierwszej wersji swojego projektu: co chcecie osiągnąć, jak aplikacja ma
+    wyglądać, jakie dane będzie przechowywać i co ma umożliwiać użytkownikowi. Rezultatem będą
+    zapisane ustalenia, szkice oraz plan prac dla v1.
+    1. Ustalcie cel i granice wersji v1
+    Kontynuujcie projekt wybrany na laboratorium 01, w tym samym dwuosobowym zespole. Zapiszcie
+    tytuł projektu, głównego odbiorcę i jeden najważniejszy cel v1. W 3-5 zdaniach wyjaśnijcie, jaki
+    konkretny efekt użytkownik ma uzyskać w tej wersji. Wybierzcie z wcześniejszej listy 3-5 funkcji MVP i
+    potwierdźcie, które pomysły odkładacie do kolejnej iteracji.
+    2. Poznajcie cykl tworzenia kolejnych wersji
+    W tym ćwiczeniu planujecie projekt w kolejności przedstawionej poniżej. Po sprawdzeniu spójności v1
+    rozpoczyna się kolejny obieg dla v2: ponownie analizujecie widoki, strukturę bazy i funkcjonalności.
+    I iteracja: v1
+    1. Widoki
+    Jak to ma wyglądać?
+    2. Struktura bazy
+    Jakie dane zapisujemy?
+    3. Funkcjonalności
+    Co ma działać?
+    Ocena v1 i powrót do widoków: początek v2
+    W v2 ponownie przechodzimy przez te same trzy etapy.
+    Jeśli podczas planowania odkryjecie brak, wróćcie do odpowiedniego wcześniejszego etapu i zaktualizujcie powiązane
+    ustalenia.
+    Przykład: SalaSpot - prosty system rezerwacji sal
+    Cel v1: użytkownik może znaleźć salę, zarezerwować wolny termin i anulować własną rezerwację.
+    Widok Potrzebne dane Funkcjonalność
+    W01 Lista sal Sala, Rezerwacja F01 Sprawdzenie dostępności.
+    W02 Rezerwacja sali Użytkownik, Sala, Rezerwacja F02 Zapis wolnego terminu.
+    W03 Moje rezerwacje Użytkownik, Sala, Rezerwacja F03 Anulowanie własnej rezerwacji.
+    INŻYNIERIA OPROGRAMOWANIA LABORATORIUM 02
+    Prowadzący zajęcia: Artur Samojluk 2 / 3
+    Widoki, baza i funkcje
+    Każdy etap powinien zakończyć się konkretną notatką lub szkicem. Planujcie elementy
+    potrzebne do osiągnięcia celu v1.
+    3. Zaprojektujcie widoki - jak to ma wyglądać?
+    01 Wypiszcie co najmniej 3 główne widoki i nadajcie im identyfikatory W01, W02 itd. Przy każdym
+    zapiszcie, kto z niego korzysta i w jakim celu.
+    02 Dla każdego widoku wykonajcie prosty szkic: nagłówek, nawigacja, główna treść, pola formularza
+    i przyciski. Zaznaczcie przejścia pomiędzy widokami. Możecie rysować ręcznie i dołączyć czytelne
+    zdjęcia albo przygotować szkice cyfrowo.
+    03 Dopiszcie, jakie dane są wyświetlane i wprowadzane oraz co zobaczy użytkownik po poprawnym
+    działaniu i po błędzie. Opiszcie np. komunikat o zajętym terminie.
+    4. Zaplanujcie strukturę bazy - jakie dane zapisujemy?
+    Na podstawie widoków wypiszcie potrzebne tabele, czyli grupy przechowywanych danych. Dla każdej
+    podajcie nazwę, podstawowe pola i ich typy, np. tekst, liczba lub data i godzina. Oznaczcie klucz
+    główny (PK), który identyfikuje rekord, oraz klucze obce (FK), które łączą rekordy między tabelami.
+    Narysujcie prosty schemat powiązań i zaznaczcie ich krotności.
+    Przykładowy zakres danych dla SalaSpot:
+    Tabela Podstawowe pola
+    Użytkownik id (PK), imię (tekst), e-mail (tekst)
+    Sala id (PK), nazwa (tekst)
+    Rezerwacja id (PK), użytkownik_id (FK), sala_id (FK), początek i koniec (data i godzina),
+    status (tekst)
+    W przykładzie jeden użytkownik może mieć wiele rezerwacji, a jedna sala może występować w wielu rezerwacjach - są
+    to dwie relacje 1:N. Własny schemat dopasujcie do swojego projektu.
+    5. Opiszcie funkcjonalności - co i jak ma działać?
+    Rozwińcie opis 3-5 funkcji MVP, zachowując identyfikatory F01, F02 itd. z laba 01. Dla każdej podajcie:
+    użytkownika, oczekiwane działanie, powiązany widok, potrzebne dane oraz warunek potwierdzający
+    poprawne działanie. Uwzględnijcie najważniejszą sytuację błędną lub ograniczenie.
+    Przykład: F02 - utworzenie rezerwacji
+    Użytkownik w W02 wybiera salę, początek i koniec rezerwacji. System zapisuje rekord w tabeli
+    Rezerwacja i pokazuje go w W03. Warunek: początek jest wcześniejszy niż koniec, a termin nie
+    nakłada się na aktywną rezerwację tej sali. Przy konflikcie użytkownik otrzymuje komunikat.
+    INŻYNIERIA OPROGRAMOWANIA LABORATORIUM 02
+    Prowadzący zajęcia: Artur Samojluk 3 / 3
+    Mapa prac i iteracja v2
+    Połączcie cele, wygląd, dane i działanie w jeden plan. Każda funkcjonalność v1 powinna mieć
+    wskazany widok i potrzebne dane.
+    6. Ułóżcie mapę prac dla pierwszej iteracji
+    Przygotujcie tabelę zadań v1. Każde zadanie powinno mieć osobę odpowiedzialną, termin, zależność od
+    wcześniejszych zadań i oczekiwany rezultat. Uzgodnijcie podział pracy obu osób. Poniższa kolejność
+    jest punktem wyjścia do Waszej mapy:
+    Etap v1 Od czego zależy? Oczekiwany rezultat
+    Cel i zakres Pomysł z laba 01 Jasny cel v1 i wybrane funkcje MVP.
+    1. Widoki Cel i zakres v1 Lista widoków, szkice i nawigacja.
+    2. Struktura bazy Dane potrzebne w widokach Tabele, pola, klucze i relacje.
+    3. Funkcjonalności Widoki i struktura bazy Opis działania i warunki poprawności.
+    Sprawdzenie
+    spójności
+    Wszystkie trzy etapy Każda funkcja ma widok i potrzebne dane.
+    7. Zanotujcie kierunek kolejnej iteracji - v2
+    Zapiszcie co najmniej 2 pomysły na rozwój w v2 i uzasadnijcie ich cel. Dla każdego wskażcie, co zmieni
+    się w widokach, danych oraz funkcjonalnościach. Jeśli dany obszar nie wymaga zmiany, zapiszcie to
+    wprost. Dla v2 rozpoczniecie ten sam cykl od ponownej analizy widoków.
+    Przykład: filtrowanie sal według liczby miejsc: filtr w W01, nowe pole „liczba_miejsc” w tabeli Sala i
+    funkcja wyświetlania pasujących sal.
+    8. Zapiszcie rezultaty i sprawdźcie kompletność
+    docs/roadmap-v1.md zawiera cel, zakres v1, opisy funkcji i ich powiązania z widokami oraz danymi.
+    Dołączono co najmniej 3 szkice widoków z nawigacją oraz schemat bazy z polami i relacjami.
+    Mapa obejmuje zadania, odpowiedzialność obu osób, terminy, zależności i oczekiwane rezultaty.
+    Zapisano co najmniej 2 pomysły v2 i wpływ każdego na widoki, dane oraz funkcje.
+    README.md zawiera link do mapy; w LaboChat.com zapisano zadania i linki do dokumentacji.
+    Zmiany są w repozytorium GitHub; każda osoba ma co najmniej jeden własny merytoryczny commit.
+    Sposób oddania i termin
+    Przekażcie prowadzącemu link do mapy w repozytorium GitHub oraz link do przestrzeni projektu w
+    LaboChat.com. Termin: do kolejnych zajęć. Obie osoby powinny umieć wyjaśnić cel v1, powiązania
+    widoków z danymi i funkcjami oraz sposób przejścia do v2.
+
+    Przygotowałem Laboratorium 02 dla tego samego projektu Park Rozrywki „Wirgo”, na podstawie kodu HTML i JavaScript z poprzedniego zadania.
+
+    Tym razem potrzebujesz dokumentu docs/roadmap-v1.md, który zawiera:
+
+        Cel i zakres pierwszej wersji aplikacji.
+
+        Widoki aplikacji wraz ze szkicami i nawigacją.
+
+        Strukturę bazy danych z tabelami, polami i relacjami.
+
+        Opis funkcjonalności MVP.
+
+        Mapę zadań dla dwóch osób.
+
+        Pomysły na rozwój aplikacji w wersji v2.
+
+    Przygotowałem całość tak, żeby można było umieścić ją bezpośrednio w repozytorium GitHub.
+    Pisanie
+    ROAD MAP PROJEKTU – LABORATORIUM 02
+    Park Rozrywki „Wirgo” – System Obsługi i Zarządzania Parkiem Rozrywki
+
+    Przedmiot: Inżynieria Oprogramowania
+    Prowadzący: Artur Samojluk
+    Zespół: Wirgo Team
+    Iteracja: v1
+    Wersja dokumentu: 1.0
+    1. Cel i zakres wersji v1
+    1.1. Cel projektu
+
+    Celem pierwszej wersji aplikacji Park Rozrywki „Wirgo” jest stworzenie systemu umożliwiającego podstawową obsługę gości oraz kontrolowanie najważniejszych procesów zachodzących na terenie parku rozrywki.
+
+    Głównym odbiorcą systemu są pracownicy parku, w szczególności kasjerzy, pracownicy bramek oraz osoby odpowiedzialne za stan techniczny atrakcji. Użytkownik będzie mógł sprzedawać wejściówki, wydawać opaski RFID, doładowywać je żetonami oraz kontrolować możliwość wejścia na poszczególne atrakcje. System umożliwi również sprawdzanie dostępności atrakcji oraz tworzenie zamówień gastronomicznych. Dane będą przechowywane w zaprojektowanej bazie danych, dzięki czemu informacje nie będą znikały po zamknięciu aplikacji. Pierwsza wersja ma zapewnić sprawniejszą obsługę gości i ograniczyć błędy związane z ręcznym kontrolowaniem opłat oraz dostępności atrakcji.
+    1.2. Główny odbiorca
+        Kasjerzy – sprzedaż wejściówek i obsługa opasek.
+        Pracownicy bramek – kontrolowanie wejść na atrakcje.
+        Technicy – aktualizowanie stanu technicznego atrakcji.
+        Pracownicy gastronomii – tworzenie zamówień.
+    1.3. Funkcjonalności wybrane do MVP
+
+    W pierwszej iteracji realizujemy pięć najważniejszych funkcjonalności:
+    ID	Funkcjonalność	Decyzja
+    F01	Sprzedaż biletów, karnetów i wydawanie opasek RFID.	MVP
+    F02	Sprawdzanie stanu opaski i doładowywanie jej żetonami.	MVP
+    F03	Tworzenie zamówień gastronomicznych.	MVP
+    F05	Sprawdzanie i aktualizowanie stanu technicznego atrakcji.	MVP
+    F07	Weryfikacja opasek RFID i kontrolowanie wejścia na atrakcje.	MVP
+    1.4. Funkcjonalności odłożone do v2
+        F04 – rozbudowana obsługa zamówień gastronomicznych przez kucharza, w tym zmiana statusów zamówień.
+        F06 – rozbudowane zarządzanie harmonogramami pracowników.
+        F08 – usuwanie i edycja wpisów w harmonogramie pracowników.
+    2. Projekt widoków aplikacji
+
+    Aplikacja będzie posiadała osobne panele przeznaczone dla różnych grup pracowników. Nawigacja będzie umożliwiała przełączanie się pomiędzy poszczególnymi modułami.
+    2.1. Lista głównych widoków
+    ID	Nazwa widoku	Użytkownik	Cel
+    W01	Panel kasjera	Kasjer	Sprzedaż biletów, wydawanie opasek i doładowywanie żetonów.
+    W02	Panel bramki	Pracownik bramki	Weryfikacja opasek RFID i kontrolowanie wejścia na atrakcje.
+    W03	Panel technika	Technik	Sprawdzanie i aktualizowanie stanu technicznego atrakcji.
+    W04	Panel gastronomii	Kasjer / pracownik gastronomii	Przeglądanie menu i tworzenie zamówień.
+    W05	Panel menedżera	Menedżer	Przeglądanie i zarządzanie harmonogramem pracowników.
+    2.2. Szkice widoków
+    W01 – Panel kasjera
+
+    Cel: Sprzedaż wejściówek oraz obsługa opasek RFID.
+    text
+
+    +--------------------------------------------------+
+    | PARK ROZRYWKI WIRGO                              |
+    | [Kasjer] [Kucharz] [Technik] [Menedżer] [Bramka] |
+    +--------------------------------------------------+
+    | PANEL KASJERA                                    |
+    +-------------------------+------------------------+
+    | WYDAWANIE OPASEK        | MENU GASTRONOMICZNE     |
+    |                         |                        |
+    | Typ wejściówki:         | Zapiekanka       [ + ]  |
+    | [Żetonowa / Karnet]     | Frytki           [ + ]  |
+    |                         | Hot Dog          [ + ]  |
+    | Liczba żetonów:         | Lody             [ + ]  |
+    | [10              ]      | Napój            [ + ]  |
+    |                         |                        |
+    | Rezerwacja:             | ZAMÓWIENIE              |
+    | [REZ-101         ]      | Lista produktów        |
+    |                         | Suma: 0,00 PLN         |
+    | [WYDAJ OPASKĘ]          | [FINALIZUJ]             |
+    |                         |                        |
+    | ID opaski: PAS-001      |                        |
+    |                         |                        |
+    | DOŁADOWANIE OPASKI      |                        |
+    | ID: [PAS-001]           |                        |
+    | Żetony: [10]            |                        |
+    | [DOŁADUJ]               |                        |
+    +-------------------------+------------------------+
+
+    Dane wyświetlane:
+        Typ wejściówki.
+        Identyfikator opaski.
+        Aktualne saldo żetonów.
+        Menu i ceny produktów.
+        Wartość zamówienia.
+
+    Dane wprowadzane:
+        Typ biletu lub karnetu.
+        Liczba żetonów.
+        Identyfikator opaski.
+        Liczba żetonów do doładowania.
+        Produkty gastronomiczne.
+
+    Komunikaty:
+        Sukces: „Opaska została poprawnie wydana”.
+        Sukces: „Doładowano opaskę”.
+        Błąd: „Nie znaleziono opaski”.
+        Błąd: „Nieprawidłowa liczba żetonów”.
+    W02 – Panel bramki
+
+    Cel: Sprawdzanie uprawnień gościa do korzystania z atrakcji.
+    text
+
+    +--------------------------------------------------+
+    | PARK ROZRYWKI WIRGO                              |
+    | [Kasjer] [Kucharz] [Technik] [Menedżer] [Bramka] |
+    +--------------------------------------------------+
+    | PANEL BRAMKI                                     |
+    +--------------------------------------------------+
+    |                                                  |
+    | Wybierz atrakcję:                                |
+    | [Diabelski Młyn                         v]       |
+    |                                                  |
+    | ID opaski RFID:                                  |
+    | [PAS-001                                  ]      |
+    |                                                  |
+    | [          SKANUJ OPASKĘ          ]              |
+    |                                                  |
+    +--------------------------------------------------+
+    |                STATUS BRAMKI                     |
+    |                                                  |
+    |             [ IKONA STATUSU ]                    |
+    |                                                  |
+    |               BRAMKA OTWARTA                    |
+    |                                                  |
+    |              Pozostało: 9 żetonów                |
+    |                                                  |
+    |              [Informacje o wejściu]              |
+    +--------------------------------------------------+
+
+    Dane wyświetlane:
+        Lista atrakcji.
+        Koszt wejścia na atrakcję.
+        Status techniczny atrakcji.
+        Identyfikator opaski.
+        Saldo żetonów.
+
+    Dane wprowadzane:
+        Wybrana atrakcja.
+        Identyfikator opaski RFID.
+
+    Komunikaty:
+        Sukces: „Bramka otwarta – zezwolono na wejście”.
+        Błąd: „Nieznana opaska”.
+        Błąd: „Brak wystarczającej liczby żetonów”.
+        Błąd: „Atrakcja jest obecnie niedostępna”.
+    W03 – Panel technika
+
+    Cel: Kontrola dostępności i stanu technicznego atrakcji.
+    text
+
+    +--------------------------------------------------+
+    | PARK ROZRYWKI WIRGO                              |
+    | [Kasjer] [Kucharz] [Technik] [Menedżer] [Bramka] |
+    +--------------------------------------------------+
+    | PANEL TECHNIKA                                   |
+    +--------------------------------------------------+
+    | LISTA ATRAKCJI                                   |
+    +--------------------------------------------------+
+    | 1. Diabelski Młyn                                |
+    |    Koszt: 3 żetony                               |
+    |    Status: DZIAŁAJĄCA                            |
+    |    [NAPRAW] [OZNACZ JAKO SPRAWNA]                |
+    +--------------------------------------------------+
+    | 2. Kolejka Górska Ukiel                          |
+    |    Koszt: 5 żetonów                              |
+    |    Status: DZIAŁAJĄCA                            |
+    |    [NAPRAW] [OZNACZ JAKO SPRAWNA]                |
+    +--------------------------------------------------+
+    | 3. Autodrom                                      |
+    |    Koszt: 2 żetony                               |
+    |    Status: W NAPRAWIE                            |
+    |    [NAPRAW] [OZNACZ JAKO SPRAWNA]                |
+    +--------------------------------------------------+
+
+    Dane wyświetlane:
+        Nazwa atrakcji.
+        Koszt wejścia.
+        Aktualny status techniczny.
+
+    Dane wprowadzane:
+        Identyfikator atrakcji.
+        Nowy status techniczny.
+
+    Komunikaty:
+        Sukces: „Status atrakcji został zaktualizowany”.
+        Błąd: „Nie znaleziono atrakcji”.
+        Informacja: „Atrakcja jest obecnie niedostępna dla gości”.
+    W04 – Panel gastronomii
+
+    Cel: Przyjmowanie i tworzenie zamówień gastronomicznych.
+    text
+
+    +--------------------------------------------------+
+    | PARK ROZRYWKI WIRGO                              |
+    | [Kasjer] [Kucharz] [Technik] [Menedżer] [Bramka] |
+    +--------------------------------------------------+
+    | PANEL GASTRONOMII                                |
+    +--------------------------+-----------------------+
+    | MENU                     | ZAMÓWIENIE             |
+    |                          |                       |
+    | Zapiekanka - 18 PLN [+]  | Zapiekanka x2         |
+    | Frytki - 14 PLN [+]      | Napój x1              |
+    | Hot Dog - 15 PLN [+]     |                       |
+    | Lody - 10 PLN [+]        | Razem: 44 PLN         |
+    | Napój - 8 PLN [+]        |                       |
+    | Kawa - 12 PLN [+]        | [FINALIZUJ ZAMÓWIENIE]|
+    +--------------------------+-----------------------+
+
+    Dane wyświetlane:
+        Nazwy produktów.
+        Ceny.
+        Ilości produktów.
+        Łączna wartość zamówienia.
+
+    Dane wprowadzane:
+        Wybrane produkty.
+        Liczba produktów.
+
+    Komunikaty:
+        Sukces: „Zamówienie zostało wysłane do kuchni”.
+        Błąd: „Nie można utworzyć pustego zamówienia”.
+    W05 – Panel menedżera
+
+    Cel: Zarządzanie pracownikami i ich harmonogramami.
+    text
+
+    +--------------------------------------------------+
+    | PARK ROZRYWKI WIRGO                              |
+    | [Kasjer] [Kucharz] [Technik] [Menedżer] [Bramka] |
+    +--------------------------------------------------+
+    | PANEL MENEDŻERA                                  |
+    +--------------------------------------------------+
+    | PRZYPISZ PRACOWNIKA                              |
+    |                                                  |
+    | Pracownik: [Jan Kowalski               v]        |
+    | Miejsce:   [Kasa Główna                v]        |
+    | Od:        [10:00]                              |
+    | Do:        [18:00]                              |
+    |                                                  |
+    | [ZAPISZ W HARMONOGRAMIE]                         |
+    +--------------------------------------------------+
+    | AKTUALNY GRAFIK                                  |
+    |                                                  |
+    | Pracownik       Miejsce        Godziny            |
+    | Jan Kowalski    Kasa           10:00-18:00        |
+    | Anna Nowak      Diabelski Młyn 10:00-18:00        |
+    +--------------------------------------------------+
+
+    Dane wyświetlane:
+        Imię i nazwisko pracownika.
+        Stanowisko lub miejsce pracy.
+        Godziny pracy.
+
+    Dane wprowadzane:
+        Pracownik.
+        Miejsce pracy.
+        Godzina rozpoczęcia.
+        Godzina zakończenia.
+
+    Komunikaty:
+        Sukces: „Dodano pracownika do harmonogramu”.
+        Ostrzeżenie: „Pracownik ma już przypisany grafik”.
+        Błąd: „Nieprawidłowy przedział godzin”.
+    2.3. Nawigacja między widokami
+
+    Przejścia między widokami będą realizowane za pomocą menu nawigacyjnego znajdującego się w górnej części aplikacji.
+    text
+
+                        WIRGO
+                          |
+            +-------------+-------------+
+            |             |             |
+           W01           W02           W03
+         Kasjer         Bramka       Technik
+            |
+            +-------------+
+            |
+           W04
+       Gastronomia
+
+            W05
+         Menedżer
+
+    Każdy panel będzie dostępny poprzez wybranie odpowiedniej zakładki. W wersji v1 widoki będą korzystały ze wspólnych danych aplikacji.
+    3. Struktura bazy danych
+    3.1. Założenia
+
+    Baza danych będzie przechowywać informacje o opaskach RFID, atrakcjach parku, doładowaniach, wejściach gości oraz zamówieniach gastronomicznych.
+
+    Każda tabela będzie posiadała własny klucz główny (PK). Klucze obce (FK) będą odpowiadały za powiązania między tabelami.
+
+    Przyjęte typy danych:
+        INT – liczba całkowita.
+        VARCHAR – tekst.
+        DECIMAL – liczba dziesiętna.
+        DATETIME – data i godzina.
+        DATE – data.
+        TIME – godzina.
+    3.2. Tabela: Opaska
+
+    Przechowuje informacje o opaskach RFID wydawanych gościom.
+    Pole	Typ danych	Klucz	Opis
+    id	INT	PK	Identyfikator opaski
+    numer_rfid	VARCHAR(30)	UNIQUE	Unikalny numer opaski
+    typ	VARCHAR(20)	-	Żetonowa lub karnet
+    saldo_zetonow	INT	-	Liczba dostępnych żetonów
+    wlasciciel	VARCHAR(100)	-	Imię i nazwisko lub oznaczenie gościa
+    data_wydania	DATETIME	-	Data wydania opaski
+    status	VARCHAR(20)	-	Aktywna lub nieaktywna
+    3.3. Tabela: Atrakcja
+
+    Przechowuje informacje o atrakcjach dostępnych w parku.
+    Pole	Typ danych	Klucz	Opis
+    id	INT	PK	Identyfikator atrakcji
+    nazwa	VARCHAR(100)	-	Nazwa atrakcji
+    koszt_zetonow	INT	-	Koszt wejścia
+    status	VARCHAR(30)	-	Stan techniczny atrakcji
+    3.4. Tabela: Doladowanie
+
+    Przechowuje historię doładowań opasek.
+    Pole	Typ danych	Klucz	Opis
+    id	INT	PK	Identyfikator doładowania
+    opaska_id	INT	FK	Identyfikator opaski
+    liczba_zetonow	INT	-	Liczba dodanych żetonów
+    data_doladowania	DATETIME	-	Data doładowania
+    3.5. Tabela: Wejscie
+
+    Przechowuje historię wejść gości na atrakcje.
+    Pole	Typ danych	Klucz	Opis
+    id	INT	PK	Identyfikator wejścia
+    opaska_id	INT	FK	Identyfikator użytej opaski
+    atrakcja_id	INT	FK	Identyfikator atrakcji
+    data_wejscia	DATETIME	-	Data i godzina wejścia
+    pobrane_zetony	INT	-	Liczba pobranych żetonów
+    status	VARCHAR(20)	-	Zaakceptowane lub odrzucone
+    3.6. Tabela: Zamowienie
+
+    Przechowuje informacje o zamówieniach gastronomicznych.
+    Pole	Typ danych	Klucz	Opis
+    id	INT	PK	Identyfikator zamówienia
+    data_utworzenia	DATETIME	-	Data utworzenia zamówienia
+    suma	DECIMAL(8,2)	-	Łączna cena zamówienia
+    status	VARCHAR(30)	-	Oczekujące, w trakcie lub zrealizowane
+    3.7. Tabela: Produkt
+
+    Przechowuje dostępne produkty gastronomiczne.
+    Pole	Typ danych	Klucz	Opis
+    id	INT	PK	Identyfikator produktu
+    nazwa	VARCHAR(100)	-	Nazwa produktu
+    cena	DECIMAL(8,2)	-	Cena produktu
+    3.8. Tabela: PozycjaZamowienia
+
+    Łączy zamówienia z produktami i przechowuje ich ilości.
+    Pole	Typ danych	Klucz	Opis
+    id	INT	PK	Identyfikator pozycji
+    zamowienie_id	INT	FK	Identyfikator zamówienia
+    produkt_id	INT	FK	Identyfikator produktu
+    ilosc	INT	-	Liczba zamówionych produktów
+    cena_jednostkowa	DECIMAL(8,2)	-	Cena w chwili zamówienia
+    3.9. Tabela: Pracownik
+
+    Przechowuje podstawowe informacje o pracownikach parku.
+    Pole	Typ danych	Klucz	Opis
+    id	INT	PK	Identyfikator pracownika
+    imie	VARCHAR(50)	-	Imię
+    nazwisko	VARCHAR(50)	-	Nazwisko
+    stanowisko	VARCHAR(50)	-	Stanowisko pracownika
+    3.10. Tabela: Harmonogram
+
+    Przechowuje informacje o przydziałach pracowników.
+    Pole	Typ danych	Klucz	Opis
+    id	INT	PK	Identyfikator wpisu
+    pracownik_id	INT	FK	Identyfikator pracownika
+    miejsce	VARCHAR(100)	-	Miejsce pracy
+    data_pracy	DATE	-	Dzień pracy
+    godzina_od	TIME	-	Początek zmiany
+    godzina_do	TIME	-	Koniec zmiany
+
+    Uwaga: Tabele Pracownik i Harmonogram zostały uwzględnione jako przygotowanie do kolejnej iteracji v2.
+    3.11. Schemat relacji bazy danych
+    mermaid
+
+    erDiagram
+        OPASKA ||--o{ DOLADOWANIE : posiada
+        OPASKA ||--o{ WEJSCIE : rejestruje
+        ATRAKCJA ||--o{ WEJSCIE : dotyczy
+
+        ZAMOWIENIE ||--|{ POZYCJA_ZAMOWIENIA : zawiera
+        PRODUKT ||--o{ POZYCJA_ZAMOWIENIA : wystepuje
+
+        PRACOWNIK ||--o{ HARMONOGRAM : posiada
+
+    Opis relacji
+        Opaska – Doładowanie (1:N): jedna opaska może mieć wiele doładowań.
+        Opaska – Wejście (1:N): jedna opaska może być używana do wielu wejść.
+        Atrakcja – Wejście (1:N): jedna atrakcja może mieć wiele zarejestrowanych wejść.
+        Zamówienie – PozycjaZamowienia (1:N): jedno zamówienie może zawierać wiele pozycji.
+        Produkt – PozycjaZamowienia (1:N): jeden produkt może występować w wielu pozycjach zamówień.
+        Pracownik – Harmonogram (1:N): jeden pracownik może mieć wiele wpisów w harmonogramie.
+    4. Opis funkcjonalności MVP
+    F01 – Sprzedaż biletów, karnetów i wydawanie opasek RFID
+
+    Użytkownik: Kasjer.
+
+    Widok: W01 – Panel kasjera.
+
+    Oczekiwane działanie:
+
+    Kasjer wybiera rodzaj wejściówki, określa liczbę żetonów lub rodzaj karnetu i zatwierdza sprzedaż. System generuje unikalny identyfikator opaski RFID i zapisuje informacje o niej w bazie danych.
+
+    Potrzebne dane:
+        Typ wejściówki.
+        Numer RFID.
+        Liczba żetonów.
+        Właściciel opaski.
+        Data wydania.
+
+    Warunek poprawnego działania:
+
+    Nowa opaska zostaje zapisana w bazie danych i otrzymuje unikalny identyfikator.
+
+    Sytuacja błędna:
+
+    Jeżeli podano nieprawidłową liczbę żetonów lub identyfikator opaski już istnieje, system wyświetla komunikat o błędzie i nie zapisuje nieprawidłowych danych.
+    F02 – Doładowywanie opaski żetonami
+
+    Użytkownik: Kasjer.
+
+    Widok: W01 – Panel kasjera.
+
+    Oczekiwane działanie:
+
+    Kasjer wpisuje identyfikator opaski oraz liczbę żetonów, które chce dodać. System wyszukuje opaskę, sprawdza jej typ i aktualizuje saldo żetonów.
+
+    Potrzebne dane:
+        Numer RFID.
+        Aktualne saldo.
+        Liczba dodawanych żetonów.
+        Data doładowania.
+
+    Warunek poprawnego działania:
+
+    Saldo opaski zostaje zwiększone o podaną liczbę żetonów, a operacja zostaje zapisana w historii doładowań.
+
+    Sytuacja błędna:
+
+    Jeżeli opaska nie istnieje, jest nieaktywna lub posiada karnet czasowy, system nie wykonuje doładowania i wyświetla odpowiedni komunikat.
+    F03 – Tworzenie zamówień gastronomicznych
+
+    Użytkownik: Kasjer lub pracownik gastronomii.
+
+    Widok: W04 – Panel gastronomii.
+
+    Oczekiwane działanie:
+
+    Użytkownik wybiera produkty z menu, określa ich ilość, a system automatycznie oblicza wartość całego zamówienia. Po zatwierdzeniu zamówienie zostaje zapisane w bazie danych.
+
+    Potrzebne dane:
+        Lista produktów.
+        Ceny produktów.
+        Ilości produktów.
+        Data utworzenia zamówienia.
+        Łączna wartość zamówienia.
+
+    Warunek poprawnego działania:
+
+    Zamówienie zawierające co najmniej jedną pozycję zostaje zapisane w bazie danych wraz z prawidłową sumą.
+
+    Sytuacja błędna:
+
+    Jeżeli użytkownik próbuje zatwierdzić puste zamówienie lub podaje nieprawidłową ilość produktu, system wyświetla komunikat i nie zapisuje zamówienia.
+    F05 – Zarządzanie stanem technicznym atrakcji
+
+    Użytkownik: Technik.
+
+    Widok: W03 – Panel technika.
+
+    Oczekiwane działanie:
+
+    Technik przegląda listę atrakcji, sprawdza ich aktualny stan techniczny i może zmienić status atrakcji na „W trakcie naprawy” lub „Działająca”.
+
+    Potrzebne dane:
+        Identyfikator atrakcji.
+        Nazwa atrakcji.
+        Aktualny status.
+        Nowy status.
+
+    Warunek poprawnego działania:
+
+    Zmiana statusu zostaje zapisana w bazie danych i jest widoczna również w panelu bramki.
+
+    Sytuacja błędna:
+
+    Jeżeli atrakcja nie istnieje, system nie wykonuje zmiany i wyświetla komunikat o błędzie.
+    F07 – Weryfikacja opasek RFID i kontrola wejścia na atrakcje
+
+    Użytkownik: Pracownik bramki.
+
+    Widok: W02 – Panel bramki.
+
+    Oczekiwane działanie:
+
+    Pracownik wybiera atrakcję i wpisuje lub skanuje identyfikator opaski RFID. System sprawdza, czy opaska istnieje, czy jest aktywna, czy atrakcja działa oraz czy gość posiada odpowiednią liczbę żetonów.
+
+    Jeżeli warunki są spełnione, system zezwala na wejście i pobiera odpowiednią liczbę żetonów. W przypadku karnetu czasowego system nie pobiera żetonów, o ile karnet jest ważny.
+
+    Potrzebne dane:
+        Numer RFID.
+        Typ opaski.
+        Saldo żetonów.
+        Identyfikator atrakcji.
+        Koszt wejścia.
+        Status techniczny atrakcji.
+        Data i godzina wejścia.
+
+    Warunek poprawnego działania:
+
+    System zezwala na wejście, jeżeli opaska jest aktywna, atrakcja jest sprawna i dostępne jest odpowiednie saldo lub ważny karnet. Operacja zostaje zapisana w historii wejść.
+
+    Sytuacja błędna:
+
+    Jeżeli opaska jest nieznana, nieaktywna, saldo jest niewystarczające lub atrakcja jest niedostępna, system blokuje wejście i wyświetla odpowiedni komunikat.

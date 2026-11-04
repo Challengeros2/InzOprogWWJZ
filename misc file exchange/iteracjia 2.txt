@@ -1,0 +1,65 @@
+7. Kierunek kolejnej iteracji – v2
+
+W drugiej iteracji planowane jest rozszerzenie aplikacji o dodatkowe możliwości zarządzania parkiem rozrywki.
+Pomysł 1 – Rozbudowany system zarządzania pracownikami
+
+Cel: Ułatwienie menedżerowi organizowania pracy personelu i kontrolowania przydzielonych zmian.
+
+Zmiany w widokach:
+
+    Rozbudowanie W05 o możliwość edycji i usuwania wpisów.
+    Dodanie wyboru konkretnego dnia pracy.
+    Dodanie filtrowania pracowników według stanowiska.
+
+Zmiany w bazie danych:
+
+    Wykorzystanie tabel Pracownik i Harmonogram.
+    Dodanie możliwości przechowywania dat i godzin zmian.
+
+Zmiany w funkcjonalnościach:
+
+    Rozszerzenie F06 o pełne zarządzanie harmonogramami.
+    Rozszerzenie F08 o edycję i usuwanie wpisów.
+
+Uzasadnienie: Ułatwi to planowanie pracy personelu i ograniczy ryzyko nakładania się zmian.
+Pomysł 2 – Rozbudowana obsługa gastronomii
+
+Cel: Umożliwienie kucharzom samodzielnego zarządzania zamówieniami i kontrolowania ich realizacji.
+
+Zmiany w widokach:
+
+    Rozbudowanie W04 o osobny panel kucharza.
+    Dodanie listy zamówień oczekujących.
+    Dodanie przycisków zmiany statusu zamówienia.
+
+Zmiany w bazie danych:
+
+    Rozszerzenie tabeli Zamowienie o dodatkowe statusy.
+    Dodanie możliwości przechowywania czasu rozpoczęcia i zakończenia realizacji zamówienia.
+
+Zmiany w funkcjonalnościach:
+
+    Rozwinięcie F04 o obsługę statusów: oczekujące, w trakcie, zrealizowane i nieodebrane.
+    Dodanie możliwości przeglądania historii zamówień.
+
+Uzasadnienie: Pozwoli to na lepszą organizację pracy kuchni oraz szybszą realizację zamówień gości.
+Pomysł 3 – Historia i raportowanie wejść na atrakcje
+
+Cel: Umożliwienie analizowania liczby wejść i zużycia żetonów przez gości.
+
+Zmiany w widokach:
+
+    Dodanie widoku historii wejść.
+    Dodanie zestawień dotyczących popularności atrakcji.
+
+Zmiany w bazie danych:
+
+    Wykorzystanie tabel Opaska, Atrakcja i Wejscie.
+    Ewentualne dodanie tabeli raportów lub zapisanych zestawień.
+
+Zmiany w funkcjonalnościach:
+
+    Dodanie filtrowania historii wejść.
+    Dodanie generowania podstawowych raportów.
+
+Uzasadnienie: Ułatwi to menedżerowi analizowanie popularności atrakcji oraz kontrolowanie funkcjonowania parku.

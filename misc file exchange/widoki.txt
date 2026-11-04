@@ -1,0 +1,10 @@
+2. Projekt widoków aplikacji
+
+Aplikacja będzie posiadała osobne panele przeznaczone dla różnych grup pracowników. Nawigacja będzie umożliwiała przełączanie się pomiędzy poszczególnymi modułami.
+2.1. Lista głównych widoków
+ID	Nazwa widoku	Użytkownik	Cel
+W01	Panel kasjera	Kasjer	Sprzedaż biletów, wydawanie opasek i doładowywanie żetonów.
+W02	Panel bramki	Pracownik bramki	Weryfikacja opasek RFID i kontrolowanie wejścia na atrakcje.
+W03	Panel technika	Technik	Sprawdzanie i aktualizowanie stanu technicznego atrakcji.
+W04	Panel gastronomii	Kasjer / pracownik gastronomii	Przeglądanie menu i tworzenie zamówień.
+W05	Panel menedżera	Menedżer	Przeglądanie i zarządzanie harmonogramem pracowników.

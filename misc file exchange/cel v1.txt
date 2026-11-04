@@ -1,0 +1,5 @@
+1.1. Cel projektu
+
+Celem pierwszej wersji aplikacji Park Rozrywki „Wirgo” jest stworzenie systemu umożliwiającego podstawową obsługę gości oraz kontrolowanie najważniejszych procesów zachodzących na terenie parku rozrywki.
+
+Głównym odbiorcą systemu są pracownicy parku, w szczególności kasjerzy, pracownicy bramek oraz osoby odpowiedzialne za stan techniczny atrakcji. Użytkownik będzie mógł sprzedawać wejściówki, wydawać opaski RFID, doładowywać je żetonami oraz kontrolować możliwość wejścia na poszczególne atrakcje. System umożliwi również sprawdzanie dostępności atrakcji oraz tworzenie zamówień gastronomicznych. Dane będą przechowywane w zaprojektowanej bazie danych, dzięki czemu informacje nie będą znikały po zamknięciu aplikacji. Pierwsza wersja ma zapewnić sprawniejszą obsługę gości i ograniczyć błędy związane z ręcznym kontrolowaniem opłat oraz dostępności atrakcji.

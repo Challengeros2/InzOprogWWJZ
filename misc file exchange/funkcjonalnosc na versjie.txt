@@ -1,0 +1,14 @@
+1.3. Funkcjonalności wybrane do MVP
+
+W pierwszej iteracji realizujemy pięć najważniejszych funkcjonalności:
+ID	Funkcjonalność	Decyzja
+F01	Sprzedaż biletów, karnetów i wydawanie opasek RFID.	MVP
+F02	Sprawdzanie stanu opaski i doładowywanie jej żetonami.	MVP
+F03	Tworzenie zamówień gastronomicznych.	MVP
+F05	Sprawdzanie i aktualizowanie stanu technicznego atrakcji.	MVP
+F07	Weryfikacja opasek RFID i kontrolowanie wejścia na atrakcje.	MVP
+1.4. Funkcjonalności odłożone do v2
+
+    F04 – rozbudowana obsługa zamówień gastronomicznych przez kucharza, w tym zmiana statusów zamówień.
+    F06 – rozbudowane zarządzanie harmonogramami pracowników.
+    F08 – usuwanie i edycja wpisów w harmonogramie pracowników.
