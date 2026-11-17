@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Zarządzania Parkiem Rozrywki</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            900: '#0c4a6e',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .tab-active { @apply bg-brand-600 text-white shadow-md; }
+        .tab-inactive { @apply text-slate-300 hover:bg-slate-800 hover:text-white; }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800 min-h-screen flex flex-col">
+
+    <!-- Top Navigation & Role Switcher -->
+    <header class="bg-slate-900 text-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Branding -->
+                <div class="flex items-center space-x-3">
+                    <div class="bg-brand-500 p-2 rounded-lg text-white">
+                        <i class="fa-solid fa-ferris-wheel text-xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="font-bold text-lg leading-tight">Park Rozrywki "Wirgo"</h1>
+                        <p class="text-xs text-slate-400">System Obsługi i Zarządzania v1.0</p>
+                    </div>
+                </div>
+
+                <!-- Desktop Role Navigation Tabs -->
+                <nav class="hidden md:flex space-x-1" id="role-nav">
+                    <button onclick="switchRole('kasjer')" id="tab-kasjer" class="tab-btn tab-active px-3 py-2 rounded-md text-sm font-medium transition flex items-center gap-2">
+                        <i class="fa-solid fa-cash-register"></i> Kasjer
+                    </button>
+                    <button onclick="switchRole('kucharz')" id="tab-kucharz" class="tab-btn tab-inactive px-3 py-2 rounded-md text-sm font-medium transition flex items-center gap-2">
+                        <i class="fa-solid fa-utensils"></i> Kucharz
+                    </button>
+                    <button onclick="switchRole('technik')" id="tab-technik" class="tab-btn tab-inactive px-3 py-2 rounded-md text-sm font-medium transition flex items-center gap-2">
+                        <i class="fa-solid fa-wrench"></i> Technik
+                    </button>
+                    <button onclick="switchRole('menedzer')" id="tab-menedzer" class="tab-btn tab-inactive px-3 py-2 rounded-md text-sm font-medium transition flex items-center gap-2">
+                        <i class="fa-solid fa-user-gear"></i> Menedżer
+                    </button>
+                    <button onclick="switchRole('gost')" id="tab-gost" class="tab-btn tab-inactive px-3 py-2 rounded-md text-sm font-medium transition flex items-center gap-2">
+                        <i class="fa-solid fa-torii-gate"></i> Gość / Bramka
+                    </button>
+                </nav>
+
+                <!-- Status indicator -->
+                <div class="hidden lg:flex items-center space-x-2 text-xs bg-slate-800 py-1.5 px-3 rounded-full border border-slate-700">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span class="text-slate-300">System aktywny (2026-10-27)</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Switcher -->
+        <div class="md:hidden bg-slate-800 px-2 pt-2 pb-3 space-y-1 sm:px-3 border-t border-slate-700 flex overflow-x-auto">
+            <button onclick="switchRole('kasjer')" id="mtab-kasjer" class="text-white text-xs px-3 py-1.5 rounded whitespace-nowrap bg-brand-600">Kasjer</button>
+            <button onclick="switchRole('kucharz')" id="mtab-kucharz" class="text-slate-300 text-xs px-3 py-1.5 rounded whitespace-nowrap">Kucharz</button>
+            <button onclick="switchRole('technik')" id="mtab-technik" class="text-slate-300 text-xs px-3 py-1.5 rounded whitespace-nowrap">Technik</button>
+            <button onclick="switchRole('menedzer')" id="mtab-menedzer" class="text-slate-300 text-xs px-3 py-1.5 rounded whitespace-nowrap">Menedżer</button>
+            <button onclick="switchRole('gost')" id="mtab-gost" class="text-slate-300 text-xs px-3 py-1.5 rounded whitespace-nowrap">Bramka</button>
+        </div>
+    </header>
+
+    <!-- Notification Toast System -->
+    <div id="toast-container" class="fixed bottom-4 right-4 z-50 flex flex-col space-y-2"></div>
+
+    <!-- Main Dynamic Content Container -->
+    <main class="flex-grow max-w-7xl w-full mx-auto p-4 sm:p-6 lg:p-8">
+
+        <!-- ==================== 1. KASJER SCREEN ==================== -->
+        <section id="screen-kasjer" class="space-y-6">
+            <div class="flex justify-between items-center border-b pb-4">
+                <div>
+                    <h2 class="text-2xl font-bold text-slate-800">Terminal Kasjera</h2>
+                    <p class="text-sm text-slate-500">Kasa główna & Strefa Gastro</p>
+                </div>
+                <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-1 rounded">Kasjer ID: K-01</span>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Column 1: Wristband & Pass Sales -->
+                <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                    <h3 class="text-lg font-semibold text-slate-800 flex items-center gap-2">
+                        <i class="fa-solid fa-ring text-brand-600"></i> Wydaj Paseczek / Bilety
+                    </h3>
+                    
+                    <form onsubmit="handleWristbandSale(event)" class="space-y-3">
+                        <div>
+                            <label class="block text-xs font-medium text-slate-600 mb-1">Typ Wejściówki</label>
+                            <select id="pass-type" onchange="togglePassInputs()" class="w-full text-sm border-slate-300 border rounded-lg p-2.5 focus:ring-brand-500 focus:border-brand-500">
+                                <option value="tokens">Paseczek Żetonowy</option>
+                                <option value="pass">Karnet Czasowy (Nielimitowany)</option>
+                            </select>
+                        </div>
+
+                        <div id="token-input-group">
+                            <label class="block text-xs font-medium text-slate-600 mb-1">Liczba Żetonów (2 zł / żeton)</label>
+                            <input type="number" id="token-count" min="1" value="10" class="w-full text-sm border-slate-300 border rounded-lg p-2.5">
+                        </div>
+
+                        <div id="pass-input-group" class="hidden">
+                            <label class="block text-xs font-medium text-slate-600 mb-1">Ważność Karnetu</label>
+                            <select id="pass-duration" class="w-full text-sm border-slate-300 border rounded-lg p-2.5">
+                                <option value="1">1 Dzień (80 PLN)</option>
+                                <option value="3">3 Dni (200 PLN)</option>
+                                <option value="7">7 Dni (400 PLN)</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-medium text-slate-600 mb-1">Przypisz do Istniejącej Rezerwacji (Opcjonalnie)</label>
+                            <input type="text" id="res-search-id" placeholder="np. REZ-101" class="w-full text-sm border-slate-300 border rounded-lg p-2.5 uppercase">
+                        </div>
+
+                        <button type="submit" class="w-full bg-brand-600 hover:bg-brand-700 text-white font-medium py-2.5 rounded-lg text-sm transition">
+                            <i class="fa-solid fa-plus-circle mr-1"></i> Utwórz Konto i Wydaj Paseczek
+                        </button>
+                    </form>
+
+                    <!-- Fast Recharge -->
+                    <div class="pt-4 border-t border-slate-100">
+                        <h4 class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Szybkie Doładowanie Paseczka</h4>
+                        <div class="flex gap-2">
+                            <input type="text" id="recharge-tag" placeholder="ID Paseczka (np. PAS-001)" class="w-1/2 text-sm border rounded-lg p-2 uppercase">
+                            <input type="number" id="recharge-amount" placeholder="Żetony" class="w-1/4 text-sm border rounded-lg p-2">
+                            <button onclick="handleRecharge()" class="w-1/4 bg-slate-800 text-white text-xs rounded-lg font-medium hover:bg-slate-700">Doładuj</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Column 2 & 3: Gastro Menu & Order Ticket -->
+                <div class="lg:col-span-2 bg-white p-5 rounded-xl shadow-sm border border-slate-200 grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Gastro Menu Options -->
+                    <div>
+                        <h3 class="text-lg font-semibold text-slate-800 mb-3 flex items-center gap-2">
+                            <i class="fa-solid fa-burger text-amber-500"></i> Menu Strefy Gastro
+                        </h3>
+                        <div class="space-y-2" id="gastro-menu-items">
+                            <!-- JS Populated Menu Items -->
+                        </div>
+                    </div>
+
+                    <!-- Current Ticket Order -->
+                    <div class="flex flex-col justify-between bg-slate-50 p-4 rounded-xl border border-slate-200">
+                        <div>
+                            <div class="flex justify-between items-center border-b pb-2 mb-3">
+                                <h4 class="font-bold text-slate-700">Nowe Zamówienie Gastro</h4>
+                                <span class="text-xs text-slate-400" id="current-time-display">--:--</span>
+                            </div>
+                            <div id="order-ticket-list" class="space-y-2 text-sm max-h-56 overflow-y-auto mb-3">
+                                <p class="text-slate-400 text-xs italic text-center py-6">Brak pozycji w zamówieniu</p>
+                            </div>
+                        </div>
+
+                        <div class="border-t border-slate-300 pt-3 space-y-3">
+                            <div class="flex justify-between text-base font-bold text-slate-800">
+                                <span>Razem do zapłaty:</span>
+                                <span id="order-total-price">0.00 PLN</span>
+                            </div>
+                            <button onclick="submitGastroOrder()" id="btn-submit-order" disabled class="w-full bg-emerald-600 hover:bg-emerald-700 disabled:bg-slate-300 text-white font-medium py-2.5 rounded-lg text-sm transition">
+                                <i class="fa-solid fa-receipt mr-1"></i> Finalizuj Zamówienie
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== 2. KUCHARZ SCREEN ==================== -->
+        <section id="screen-kucharz" class="space-y-6 hidden">
+            <div class="flex justify-between items-center border-b pb-4">
+                <div>
+                    <h2 class="text-2xl font-bold text-slate-800">Kucharz - System Zamówień (KDS)</h2>
+                    <p class="text-sm text-slate-500">Realizacja posiłków w strefie gastronomicznej</p>
+                </div>
+                <div class="flex items-center gap-3">
+                    <span class="text-xs font-semibold bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full">Klucz Kuchni: Aktywny</span>
+                </div>
+            </div>
+
+            <!-- Orders Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="kitchen-orders-grid">
+                <!-- Populated dynamically via JS -->
+            </div>
+        </section>
+
+        <!-- ==================== 3. TECHNIK SCREEN ==================== -->
+        <section id="screen-technik" class="space-y-6 hidden">
+            <div class="flex justify-between items-center border-b pb-4">
+                <div>
+                    <h2 class="text-2xl font-bold text-slate-800">Panel Technika - Stan Atrakcji</h2>
+                    <p class="text-sm text-slate-500">Zarządzanie stanem technicznym 10 atrakcji w parku</p>
+                </div>
+                <div class="text-xs bg-amber-50 text-amber-800 border border-amber-200 px-3 py-1.5 rounded-lg">
+                    <i class="fa-solid fa-triangle-exclamation mr-1"></i> Zmiana stanu z "Uszkodzona" wymaga uprawnień technika.
+                </div>
+            </div>
+
+            <!-- Attractions Table / Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="attractions-grid">
+                <!-- Populated dynamically via JS -->
+            </div>
+        </section>
+
+        <!-- ==================== 4. MENEDŻER SCREEN ==================== -->
+        <section id="screen-menedzer" class="space-y-6 hidden">
+            <div class="flex justify-between items-center border-b pb-4">
+                <div>
+                    <h2 class="text-2xl font-bold text-slate-800">Menedżer - Harmonogram Pracowników</h2>
+                    <p class="text-sm text-slate-500">Tworzenie i podgląd grafik pracy personelu (30 osób)</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Add Shift Form -->
+                <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                    <h3 class="text-lg font-semibold text-slate-800 flex items-center gap-2">
+                        <i class="fa-solid fa-calendar-plus text-brand-600"></i> Przypisz Pracownika
+                    </h3>
+                    
+                    <form onsubmit="handleAssignSchedule(event)" class="space-y-3">
+                        <div>
+                            <label class="block text-xs font-medium text-slate-600 mb-1">Pracownik</label>
+                            <select id="sch-employee" class="w-full text-sm border-slate-300 border rounded-lg p-2.5">
+                                <option value="Jan Kowalski (Kasjer)">Jan Kowalski (Kasjer)</option>
+                                <option value="Anna Nowak (Opiekun)">Anna Nowak (Opiekun)</option>
+                                <option value="Piotr Bartosiewicz (Technik)">Piotr Wiśniewski (Technik)</option>
+                                <option value="Maria Borowicz (Kucharz)">Maria Zielińska (Kucharz)</option>
+                                <option value="Tomasz Kamiński (Sprzątacz)">Tomasz Kamiński (Sprzątacz)</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-medium text-slate-600 mb-1">Miejsce / Atrakcja</label>
+                            <select id="sch-attraction" class="w-full text-sm border-slate-300 border rounded-lg p-2.5">
+                                <option value="Kasa Główna">Kasa Główna</option>
+                                <option value="Strefa Gastro">Strefa Gastro</option>
+                                <option value="Diabelski Młyn">Diabelski Młyn</option>
+                                <option value="Kolejka Górska 'Ukiel'">Kolejka Górska 'Ukiel'</option>
+                                <option value="Autodrom">Autodrom</option>
+                                <option value="Dom Strachów">Dom Strachów</option>
+                            </select>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-2">
+                            <div>
+                                <label class="block text-xs font-medium text-slate-600 mb-1">Godz. Od</label>
+                                <input type="time" id="sch-time-from" value="10:00" class="w-full text-sm border rounded-lg p-2">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-medium text-slate-600 mb-1">Godz. Do</label>
+                                <input type="time" id="sch-time-to" value="18:00" class="w-full text-sm border rounded-lg p-2">
+                            </div>
+                        </div>
+
+                        <button type="submit" class="w-full bg-slate-800 hover:bg-slate-900 text-white font-medium py-2.5 rounded-lg text-sm transition">
+                            Zapisz w Harmonogramie
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Schedule List -->
+                <div class="lg:col-span-2 bg-white p-5 rounded-xl shadow-sm border border-slate-200">
+                    <h3 class="text-lg font-semibold text-slate-800 mb-4">Aktualny Grafik Pracowników</h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-sm">
+                            <thead class="bg-slate-50 text-slate-500 uppercase text-xs border-b">
+                                <tr>
+                                    <th class="py-3 px-4">Pracownik</th>
+                                    <th class="py-3 px-4">Stanowisko / Miejsce</th>
+                                    <th class="py-3 px-4">Godziny</th>
+                                    <th class="py-3 px-4 text-right">Akcja</th>
+                                </tr>
+                            </thead>
+                            <tbody id="schedule-table-body" class="divide-y divide-slate-100">
+                                <!-- Populated dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== 5. GOŚĆ / BRAMKA SCREEN ==================== -->
+        <section id="screen-gost" class="space-y-6 hidden">
+            <div class="flex justify-between items-center border-b pb-4">
+                <div>
+                    <h2 class="text-2xl font-bold text-slate-800">Symulator Bramki przy Atrakcji</h2>
+                    <p class="text-sm text-slate-500">Weryfikacja paseczka i wpuszczanie gościa na teren atrakcji</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+                <!-- Gate Control Panel -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                    <h3 class="text-lg font-semibold text-slate-800 border-b pb-2">Przyłóż Paseczek do Czytnika</h3>
+                    
+                    <div>
+                        <label class="block text-xs font-medium text-slate-600 mb-1">Wybierz Atrakcję</label>
+                        <select id="gate-attraction-select" class="w-full border rounded-lg p-2.5 text-sm font-medium">
+                            <!-- Populated dynamically -->
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-medium text-slate-600 mb-1">ID Paseczka (RFID)</label>
+                        <div class="flex gap-2">
+                            <input type="text" id="gate-tag-input" placeholder="np. PAS-001" value="PAS-001" class="flex-grow border rounded-lg p-2.5 uppercase font-mono">
+                            <button onclick="scanWristband()" class="bg-brand-600 text-white px-5 rounded-lg text-sm font-medium hover:bg-brand-700">Skanuj</button>
+                        </div>
+                    </div>
+
+                    <!-- Quick Tag helper buttons -->
+                    <div class="pt-2">
+                        <p class="text-xs text-slate-400 mb-1">Dostępne paseczki w bazie (kliknij by wkleić):</p>
+                        <div class="flex flex-wrap gap-1.5" id="preset-tags">
+                            <!-- Populated dynamically -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Turnstile Visualizer -->
+                <div id="gate-status-card" class="bg-slate-900 text-white p-6 rounded-xl flex flex-col items-center justify-center text-center space-y-4 transition-all duration-300">
+                    <div id="gate-icon-container" class="w-20 h-20 rounded-full bg-slate-800 flex items-center justify-center text-3xl text-slate-400 border-2 border-slate-700">
+                        <i class="fa-solid fa-lock"></i>
+                    </div>
+                    <div>
+                        <h4 id="gate-status-text" class="text-xl font-bold">Bramka Zablokowana</h4>
+                        <p id="gate-subtext" class="text-xs text-slate-400 mt-1">Oczekiwanie na przyłożenie paseczka...</p>
+                    </div>
+                    <div id="gate-account-info" class="text-xs bg-slate-800 p-3 rounded-lg border border-slate-700 w-full hidden text-left space-y-1">
+                        <!-- JS injected info -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 mt-auto py-4 text-center text-xs text-slate-500">
+        <p>Projektowanie Systemów Informatycznych - UWM Olsztyn &copy; 2026 Park Rozrywki System</p>
+    </footer>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        // ==========================================
+        // STATE MANAGEMENT & MOCK DATA
+        // ==========================================
+
+        const GASTRO_MENU = [
+            { id: 'm1', name: 'Zapiekanka tradycyjna', price: 18.00, icon: 'fa-bread-slice' },
+            { id: 'm2', name: 'Frytki duże z sosami', price: 14.00, icon: 'fa-bowl-rice' },
+            { id: 'm3', name: 'Hot Dog amerykański', price: 15.00, icon: 'fa-hotdog' },
+            { id: 'm4', name: 'Lody włoskie (dwusmak)', price: 10.00, icon: 'fa-ice-cream' },
+            { id: 'm5', name: 'Napój gazowany 0.5L', price: 8.00, icon: 'fa-bottle-water' },
+            { id: 'm6', name: 'Kawa Espresso / Cappuccino', price: 12.00, icon: 'fa-mug-hot' }
+        ];
+
+        let state = {
+            // Wristbands / Passes in database
+            wristbands: {
+                'PAS-001': { type: 'tokens', balance: 12, owner: 'Jan Kowalski' },
+                'PAS-002': { type: 'tokens', balance: 1, owner: 'Anna Nowak' },
+                'PAS-003': { type: 'pass', balance: 'Karnet Całodniowy', owner: 'Piotr Zieliński' }
+            },
+            // Gastro Orders
+            orders: [
+                { id: 101, items: [{ name: 'Zapiekanka tradycyjna', qty: 2 }, { name: 'Napój gazowany 0.5L', qty: 2 }], status: 'W trakcie', time: '12:15' },
+                { id: 102, items: [{ name: 'Frytki duże z sosami', qty: 1 }], status: 'Oczekujące', time: '12:22' }
+            ],
+            // 10 Park Attractions
+            attractions: [
+                { id: 1, name: "Diabelski Młyn", cost: 3, status: "Działająca" },
+                { id: 2, name: "Kolejka Górska 'Ukiel'", cost: 5, status: "Działająca" },
+                { id: 3, name: "Autodrom", cost: 2, status: "W trakcie naprawy" },
+                { id: 4, name: "Dom Strachów", cost: 4, status: "Uszkodzona" },
+                { id: 5, name: "Karuzela Wenecka", cost: 2, status: "Działająca" },
+                { id: 6, name: "Spływ Rzeczny", cost: 3, status: "Działająca" },
+                { id: 7, name: "Strzelnica Laserowa", cost: 2, status: "Działająca" },
+                { id: 8, name: "Mini Coaster dla dzieci", cost: 2, status: "Działająca" },
+                { id: 9, name: "Trampoliny", cost: 1, status: "Zamknięta" },
+                { id: 10, name: "Wieża Swobodnego Spadku", cost: 4, status: "Działająca" }
+            ],
+            // Schedules
+            schedules: [
+                { id: 1, employee: "Jan Kowalski (Kasjer)", location: "Kasa Główna", hours: "10:00 - 18:00" },
+                { id: 2, employee: "Anna Nowak (Opiekun)", location: "Diabelski Młyn", hours: "10:00 - 18:00" },
+                { id: 3, employee: "Piotr Wiśniewski (Technik)", location: "Cały Park", hours: "09:00 - 17:00" },
+                { id: 4, employee: "Maria Zielińska (Kucharz)", location: "Strefa Gastro", hours: "10:00 - 19:00" }
+            ],
+            // Current Ticket being built in Cashier Screen
+            currentCart: []
+        };
+
+        // ==========================================
+        // INITIALIZATION & TAB SWITCHING
+        // ==========================================
+
+        window.onload = function() {
+            renderGastroMenu();
+            renderKitchenOrders();
+            renderAttractions();
+            renderSchedules();
+            setupGateAttractionSelect();
+            updatePresetTagButtons();
+
+            // Clock update
+            setInterval(() => {
+                const now = new Date();
+                const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                const clockEl = document.getElementById('current-time-display');
+                if (clockEl) clockEl.innerText = timeStr;
+            }, 1000);
+        };
+
+        function switchRole(role) {
+            // Hide all screens
+            const screens = ['kasjer', 'kucharz', 'technik', 'menedzer', 'gost'];
+            screens.forEach(s => {
+                document.getElementById(`screen-${s}`).classList.add('hidden');
+                
+                // Desktop nav tabs update
+                const tab = document.getElementById(`tab-${s}`);
+                if (tab) {
+                    tab.classList.remove('tab-active');
+                    tab.classList.add('tab-inactive');
+                }
+
+                // Mobile nav tabs update
+                const mtab = document.getElementById(`mtab-${s}`);
+                if (mtab) {
+                    mtab.classList.remove('bg-brand-600', 'text-white');
+                    mtab.classList.add('text-slate-300');
+                }
+            });
+
+            // Show selected screen
+            document.getElementById(`screen-${role}`).classList.remove('hidden');
+
+            // Activate Tab
+            const activeTab = document.getElementById(`tab-${role}`);
+            if (activeTab) {
+                activeTab.classList.remove('tab-inactive');
+                activeTab.classList.add('tab-active');
+            }
+
+            const activeMTab = document.getElementById(`mtab-${role}`);
+            if (activeMTab) {
+                activeMTab.classList.add('bg-brand-600', 'text-white');
+                activeMTab.classList.remove('text-slate-300');
+            }
+        }
+
+        function showToast(message, type = 'info') {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            
+            let bg = 'bg-slate-800';
+            if (type === 'success') bg = 'bg-emerald-600';
+            if (type === 'error') bg = 'bg-rose-600';
+            if (type === 'warning') bg = 'bg-amber-600';
+
+            toast.className = `${bg} text-white text-xs px-4 py-3 rounded-lg shadow-xl flex items-center gap-2 border border-white/10 animate-bounce`;
+            toast.innerHTML = `<i class="fa-solid fa-circle-info"></i> <span>${message}</span>`;
+            
+            container.appendChild(toast);
+            setTimeout(() => {
+                toast.remove();
+            }, 3000);
+        }
+
+        // ==========================================
+        // 1. KASJER LOGIC
+        // ==========================================
+
+        function togglePassInputs() {
+            const type = document.getElementById('pass-type').value;
+            if (type === 'tokens') {
+                document.getElementById('token-input-group').classList.remove('hidden');
+                document.getElementById('pass-input-group').classList.add('hidden');
+            } else {
+                document.getElementById('token-input-group').classList.add('hidden');
+                document.getElementById('pass-input-group').classList.remove('hidden');
+            }
+        }
+
+        function handleWristbandSale(e) {
+            e.preventDefault();
+            const type = document.getElementById('pass-type').value;
+            const resId = document.getElementById('res-search-id').value.trim();
+            const newTagId = 'PAS-00' + (Object.keys(state.wristbands).length + 1);
+
+            if (type === 'tokens') {
+                const count = parseInt(document.getElementById('token-count').value) || 0;
+                state.wristbands[newTagId] = { type: 'tokens', balance: count, owner: resId ? `Rezerwacja ${resId}` : 'Gość' };
+                showToast(`Wydano Nowy Paseczek [${newTagId}] z ${count} żetonami!`, 'success');
+            } else {
+                state.wristbands[newTagId] = { type: 'pass', balance: 'Karnet Całodniowy', owner: resId ? `Rezerwacja ${resId}` : 'Gość' };
+                showToast(`Wydano Nowy Paseczek [${newTagId}] z Karnetem Czasowym!`, 'success');
+            }
+
+            document.getElementById('res-search-id').value = '';
+            updatePresetTagButtons();
+        }
+
+        function handleRecharge() {
+            const tag = document.getElementById('recharge-tag').value.trim().toUpperCase();
+            const amount = parseInt(document.getElementById('recharge-amount').value) || 0;
+
+            if (!state.wristbands[tag]) {
+                showToast(`Paseczek ${tag} nie istnieje w systemie!`, 'error');
+                return;
+            }
+
+            if (state.wristbands[tag].type === 'pass') {
+                showToast(`Paseczek ${tag} posiada aktywny karnet czasowy!`, 'warning');
+                return;
+            }
+
+            state.wristbands[tag].balance += amount;
+            showToast(`Doładowano ${amount} żetonów do paseczka ${tag}. Aktualny stan: ${state.wristbands[tag].balance}`, 'success');
+            document.getElementById('recharge-tag').value = '';
+            document.getElementById('recharge-amount').value = '';
+        }
+
+        function renderGastroMenu() {
+            const container = document.getElementById('gastro-menu-items');
+            container.innerHTML = GASTRO_MENU.map(item => `
+                <div class="flex items-center justify-between p-2.5 rounded-lg border border-slate-100 hover:border-slate-300 hover:bg-slate-50 transition">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded bg-amber-100 text-amber-700 flex items-center justify-center text-xs">
+                            <i class="fa-solid ${item.icon}"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm font-semibold text-slate-800">${item.name}</p>
+                            <p class="text-xs text-slate-500">${item.price.toFixed(2)} PLN</p>
+                        </div>
+                    </div>
+                    <button onclick="addToOrder('${item.id}')" class="bg-slate-800 text-white p-2 rounded-md hover:bg-brand-600 text-xs transition">
+                        <i class="fa-solid fa-plus"></i>
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        function addToOrder(itemId) {
+            const menuItem = GASTRO_MENU.find(m => m.id === itemId);
+            const existing = state.currentCart.find(c => c.id === itemId);
+
+            if (existing) {
+                existing.qty++;
+            } else {
+                state.currentCart.push({ ...menuItem, qty: 1 });
+            }
+            renderCurrentTicket();
+        }
+
+        function updateCartQty(itemId, change) {
+            const item = state.currentCart.find(c => c.id === itemId);
+            if (item) {
+                item.qty += change;
+                if (item.qty <= 0) {
+                    state.currentCart = state.currentCart.filter(c => c.id !== itemId);
+                }
+            }
+            renderCurrentTicket();
+        }
+
+        function renderCurrentTicket() {
+            const list = document.getElementById('order-ticket-list');
+            const submitBtn = document.getElementById('btn-submit-order');
+            const totalEl = document.getElementById('order-total-price');
+
+            if (state.currentCart.length === 0) {
+                list.innerHTML = `<p class="text-slate-400 text-xs italic text-center py-6">Brak pozycji w zamówieniu</p>`;
+                submitBtn.disabled = true;
+                totalEl.innerText = '0.00 PLN';
+                return;
+            }
+
+            submitBtn.disabled = false;
+            let total = 0;
+
+            list.innerHTML = state.currentCart.map(item => {
+                const subtotal = item.price * item.qty;
+                total += subtotal;
+                return `
+                    <div class="flex items-center justify-between border-b border-slate-200 pb-1.5">
+                        <div class="flex-grow pr-2">
+                            <p class="text-xs font-medium text-slate-800">${item.name}</p>
+                            <p class="text-[10px] text-slate-500">${item.price.toFixed(2)} PLN/szt.</p>
+                        </div>
+                        <div class="flex items-center gap-1.5">
+                            <button onclick="updateCartQty('${item.id}', -1)" class="w-5 h-5 bg-slate-200 rounded flex items-center justify-center text-xs text-slate-700 font-bold">-</button>
+                            <span class="text-xs font-bold w-4 text-center">${item.qty}</span>
+                            <button onclick="updateCartQty('${item.id}', 1)" class="w-5 h-5 bg-slate-200 rounded flex items-center justify-center text-xs text-slate-700 font-bold">+</button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            totalEl.innerText = `${total.toFixed(2)} PLN`;
+        }
+
+        function submitGastroOrder() {
+            if (state.currentCart.length === 0) return;
+
+            const now = new Date();
+            const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            
+            const newOrder = {
+                id: 100 + state.orders.length + 1,
+                items: state.currentCart.map(c => ({ name: c.name, qty: c.qty })),
+                status: 'Oczekujące',
+                time: timeStr
+            };
+
+            state.orders.push(newOrder);
+            state.currentCart = [];
+            renderCurrentTicket();
+            renderKitchenOrders();
+            showToast(`Zamówienie #${newOrder.id} wysłane do kuchni!`, 'success');
+        }
+
+        // ==========================================
+        // 2. KUCHARZ LOGIC
+        // ==========================================
+
+        function renderKitchenOrders() {
+            const grid = document.getElementById('kitchen-orders-grid');
+            if (state.orders.length === 0) {
+                grid.innerHTML = `<div class="col-span-full text-center py-12 text-slate-400">Brak aktywnych zamówień kuchennych</div>`;
+                return;
+            }
+
+            grid.innerHTML = state.orders.map(order => {
+                let statusBadge = '';
+                if (order.status === 'Oczekujące') statusBadge = '<span class="bg-amber-100 text-amber-800 text-xs px-2 py-0.5 rounded font-bold">Oczekuje</span>';
+                if (order.status === 'W trakcie') statusBadge = '<span class="bg-blue-100 text-blue-800 text-xs px-2 py-0.5 rounded font-bold">W trakcie</span>';
+                if (order.status === 'Zrealizowane') statusBadge = '<span class="bg-emerald-100 text-emerald-800 text-xs px-2 py-0.5 rounded font-bold">Gotowe</span>';
+                if (order.status === 'Nieodebrane') statusBadge = '<span class="bg-rose-100 text-rose-800 text-xs px-2 py-0.5 rounded font-bold">Nieodebrane</span>';
+
+                return `
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 flex flex-col justify-between space-y-3">
+                        <div>
+                            <div class="flex justify-between items-center border-b pb-2 mb-2">
+                                <span class="font-bold text-slate-800">Zamówienie #${order.id}</span>
+                                <div class="flex items-center gap-2">
+                                    <span class="text-xs text-slate-400">${order.time}</span>
+                                    ${statusBadge}
+                                </div>
+                            </div>
+                            <ul class="text-sm space-y-1 my-3">
+                                ${order.items.map(i => `<li class="flex justify-between"><span class="text-slate-700">${i.name}</span> <span class="font-bold text-slate-900">x${i.qty}</span></li>`).join('')}
+                            </ul>
+                        </div>
+
+                        <div class="pt-2 border-t flex gap-1.5">
+                            <button onclick="updateOrderStatus(${order.id}, 'W trakcie')" class="flex-1 bg-blue-50 text-blue-700 hover:bg-blue-100 text-xs py-2 rounded font-medium">
+                                W trakcie
+                            </button>
+                            <button onclick="updateOrderStatus(${order.id}, 'Zrealizowane')" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white text-xs py-2 rounded font-medium">
+                                Gotowe
+                            </button>
+                            <button onclick="updateOrderStatus(${order.id}, 'Nieodebrane')" class="bg-slate-100 text-slate-600 hover:bg-slate-200 text-xs px-2 rounded font-medium" title="Nieodebrane">
+                                <i class="fa-solid fa-xmark"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function updateOrderStatus(orderId, newStatus) {
+            const order = state.orders.find(o => o.id === orderId);
+            if (order) {
+                order.status = newStatus;
+                renderKitchenOrders();
+                showToast(`Zamówienie #${orderId} zmieniło status na: ${newStatus}`, 'info');
+            }
+        }
+
+        // ==========================================
+        // 3. TECHNIK LOGIC
+        // ==========================================
+
+        function renderAttractions() {
+            const grid = document.getElementById('attractions-grid');
+            grid.innerHTML = state.attractions.map(attr => {
+                let badgeClass = '';
+                if (attr.status === 'Działająca') badgeClass = 'bg-emerald-100 text-emerald-800 border-emerald-300';
+                if (attr.status === 'Uszkodzona') badgeClass = 'bg-rose-100 text-rose-800 border-rose-300';
+                if (attr.status === 'W trakcie naprawy') badgeClass = 'bg-amber-100 text-amber-800 border-amber-300';
+                if (attr.status === 'Zamknięta') badgeClass = 'bg-slate-100 text-slate-700 border-slate-300';
+
+                return `
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start mb-2">
+                                <h4 class="font-bold text-slate-800 text-base">${attr.id}. ${attr.name}</h4>
+                                <span class="text-xs font-semibold px-2 py-0.5 rounded border ${badgeClass}">${attr.status}</span>
+                            </div>
+                            <p class="text-xs text-slate-500 mb-4">Koszt wejścia: <strong class="text-slate-700">${attr.cost} żetony</strong></p>
+                        </div>
+
+                        <div class="pt-3 border-t border-slate-100 space-y-2">
+                            <label class="block text-[10px] uppercase font-bold text-slate-400">Zmień status (Uprawnienia Technika)</label>
+                            <div class="grid grid-cols-2 gap-1.5">
+                                <button onclick="changeAttractionStatus(${attr.id}, 'W trakcie naprawy')" class="bg-amber-50 hover:bg-amber-100 text-amber-800 text-[11px] py-1.5 rounded font-medium border border-amber-200">
+                                    Rozpocznij Naprawę
+                                </button>
+                                <button onclick="changeAttractionStatus(${attr.id}, 'Działająca')" class="bg-emerald-50 hover:bg-emerald-100 text-emerald-800 text-[11px] py-1.5 rounded font-medium border border-emerald-200">
+                                    Oznacz jako Sprawna
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function changeAttractionStatus(attrId, newStatus) {
+            const attr = state.attractions.find(a => a.id === attrId);
+            if (attr) {
+                // Rule: Technician only can switch "W trakcie naprawy" or "Uszkodzona" -> "Działająca"
+                attr.status = newStatus;
+                renderAttractions();
+                setupGateAttractionSelect();
+                showToast(`Atrakcja '${attr.name}' ma teraz status: ${newStatus}`, 'success');
+            }
+        }
+
+        // ==========================================
+        // 4. MENEDŻER LOGIC
+        // ==========================================
+
+        function renderSchedules() {
+            const tbody = document.getElementById('schedule-table-body');
+            tbody.innerHTML = state.schedules.map(sch => `
+                <tr class="hover:bg-slate-50">
+                    <td class="py-3 px-4 font-semibold text-slate-800">${sch.employee}</td>
+                    <td class="py-3 px-4 text-slate-600">${sch.location}</td>
+                    <td class="py-3 px-4 text-slate-600">${sch.hours}</td>
+                    <td class="py-3 px-4 text-right">
+                        <button onclick="deleteSchedule(${sch.id})" class="text-rose-600 hover:text-rose-800 text-xs font-medium">
+                            <i class="fa-solid fa-trash mr-1"></i> Usuń
+                        </button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function handleAssignSchedule(e) {
+            e.preventDefault();
+            const emp = document.getElementById('sch-employee').value;
+            const loc = document.getElementById('sch-attraction').value;
+            const from = document.getElementById('sch-time-from').value;
+            const to = document.getElementById('sch-time-to').value;
+
+            // Conflict Check
+            const conflict = state.schedules.find(s => s.employee === emp);
+            if (conflict) {
+                if (!confirm(`Ostrzeżenie: Pracownik ${emp} ma już przypisanie (${conflict.location}). Czy chcesz mimo to dopisać nowe stanowisko?`)) {
+                    return;
+                }
+            }
+
+            state.schedules.push({
+                id: state.schedules.length + 1,
+                employee: emp,
+                location: loc,
+                hours: `${from} - ${to}`
+            });
+
+            renderSchedules();
+            showToast(`Dodano nowy grafik dla ${emp}!`, 'success');
+        }
+
+        function deleteSchedule(id) {
+            state.schedules = state.schedules.filter(s => s.id !== id);
+            renderSchedules();
+            showToast('Wpis usunięty z harmonogramu', 'info');
+        }
+
+        // ==========================================
+        // 5. GOŚĆ / BRAMKA LOGIC
+        // ==========================================
+
+        function setupGateAttractionSelect() {
+            const select = document.getElementById('gate-attraction-select');
+            select.innerHTML = state.attractions.map(a => `
+                <option value="${a.id}">${a.name} (${a.cost} żetonów) - [${a.status}]</option>
+            `).join('');
+        }
+
+        function updatePresetTagButtons() {
+            const container = document.getElementById('preset-tags');
+            container.innerHTML = Object.keys(state.wristbands).map(tag => `
+                <button onclick="document.getElementById('gate-tag-input').value='${tag}'" class="bg-slate-100 hover:bg-slate-200 text-slate-700 text-[11px] px-2 py-1 rounded font-mono border">
+                    ${tag} (${state.wristbands[tag].type === 'pass' ? 'Karnet' : state.wristbands[tag].balance + 'ż'})
+                </button>
+            `).join('');
+        }
+
+        function scanWristband() {
+            const tagInput = document.getElementById('gate-tag-input').value.trim().toUpperCase();
+            const attractionId = parseInt(document.getElementById('gate-attraction-select').value);
+            const attraction = state.attractions.find(a => a.id === attractionId);
+
+            const statusCard = document.getElementById('gate-status-card');
+            const iconContainer = document.getElementById('gate-icon-container');
+            const statusText = document.getElementById('gate-status-text');
+            const subtext = document.getElementById('gate-subtext');
+            const infoBox = document.getElementById('gate-account-info');
+
+            // Reset visual states
+            statusCard.className = "bg-slate-900 text-white p-6 rounded-xl flex flex-col items-center justify-center text-center space-y-4 transition-all duration-300";
+            
+            // Check attraction operational status
+            if (attraction.status !== 'Działająca') {
+                statusCard.classList.add('bg-rose-950', 'border-rose-600');
+                iconContainer.className = "w-20 h-20 rounded-full bg-rose-900 flex items-center justify-center text-3xl text-rose-200 border-2 border-rose-500";
+                iconContainer.innerHTML = `<i class="fa-solid fa-ban"></i>`;
+                statusText.innerText = "ATRAKCJA NIEDOSTĘPNA";
+                subtext.innerText = `Atrakcja jest obecnie w stanie: ${attraction.status}`;
+                infoBox.classList.add('hidden');
+                return;
+            }
+
+            const wristband = state.wristbands[tagInput];
+
+            if (!wristband) {
+                statusCard.classList.add('bg-rose-950');
+                iconContainer.className = "w-20 h-20 rounded-full bg-rose-900 flex items-center justify-center text-3xl text-rose-200 border-2 border-rose-500";
+                iconContainer.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i>`;
+                statusText.innerText = "NIEZNANA OPASKA";
+                subtext.innerText = `Brak ID ${tagInput} w bazie danych parku.`;
+                infoBox.classList.add('hidden');
+                return;
+            }
+
+            // Check wristband validity/balance
+            if (wristband.type === 'pass') {
+                // Time pass -> Always allow
+                statusCard.classList.add('bg-emerald-950');
+                iconContainer.className = "w-20 h-20 rounded-full bg-emerald-600 flex items-center justify-center text-3xl text-white border-2 border-emerald-400 animate-pulse";
+                iconContainer.innerHTML = `<i class="fa-solid fa-door-open"></i>`;
+                statusText.innerText = "BRAMKA OTWARTA";
+                subtext.innerText = "Życzymy miłej zabawy!";
+
+                infoBox.classList.remove('hidden');
+                infoBox.innerHTML = `
+                    <p><strong>Paseczek:</strong> ${tagInput} (${wristband.owner})</p>
+                    <p><strong>Typ:</strong> Karnet Czasowy (Nielimitowany)</p>
+                    <p><strong>Wejście:</strong> ${attraction.name}</p>
+                `;
+            } else {
+                // Tokens pass -> Deduction check
+                if (wristband.balance >= attraction.cost) {
+                    wristband.balance -= attraction.cost;
+                    
+                    statusCard.classList.add('bg-emerald-950');
+                    iconContainer.className = "w-20 h-20 rounded-full bg-emerald-600 flex items-center justify-center text-3xl text-white border-2 border-emerald-400 animate-pulse";
+                    iconContainer.innerHTML = `<i class="fa-solid fa-door-open"></i>`;
+                    statusText.innerText = "BRAMKA OTWARTA";
+                    subtext.innerText = `Pobrano ${attraction.cost} żetonów. Zezwolono na wejście.`;
+
+                    infoBox.classList.remove('hidden');
+                    infoBox.innerHTML = `
+                        <p><strong>Paseczek:</strong> ${tagInput} (${wristband.owner})</p>
+                        <p><strong>Pobrano:</strong> ${attraction.cost} żetonów</p>
+                        <p><strong>Pozostały stan:</strong> <span class="text-emerald-400 font-bold">${wristband.balance} żetonów</span></p>
+                    `;
+                    updatePresetTagButtons();
+                } else {
+                    statusCard.classList.add('bg-amber-950');
+                    iconContainer.className = "w-20 h-20 rounded-full bg-amber-900 flex items-center justify-center text-3xl text-amber-200 border-2 border-amber-500";
+                    iconContainer.innerHTML = `<i class="fa-solid fa-coins"></i>`;
+                    statusText.innerText = "BRAK ŻETONÓW";
+                    subtext.innerText = `Wymagane: ${attraction.cost} żetony. Posiadasz: ${wristband.balance}`;
+
+                    infoBox.classList.remove('hidden');
+                    infoBox.innerHTML = `
+                        <p><strong>Paseczek:</strong> ${tagInput} (${wristband.owner})</p>
+                        <p class="text-amber-300">Prosimy doładować żetony w Kasie Głównej.</p>
+                    `;
+                }
+            }
+        }
+    </script>
+</body>
+</html>

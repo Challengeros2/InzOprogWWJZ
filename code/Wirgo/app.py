@@ -1,0 +1,223 @@
+"""Wirgo v1: a local Flask API for the existing browser interface."""
+from __future__ import annotations
+
+from datetime import datetime, timedelta
+
+from flask import Flask, jsonify, render_template, request
+
+import database
+
+app = Flask(__name__)
+app.json.ensure_ascii = False
+
+VALID_STATUSES = {'Działająca', 'Uszkodzona', 'W trakcie naprawy', 'Zamknięta'}
+ORDER_STATUSES = {'Oczekujące', 'W trakcie', 'Zrealizowane', 'Nieodebrane'}
+
+
+def error(message, status=400):
+    return jsonify({'error': message}), status
+
+
+def positive_int(value, maximum=100000):
+    """Reject empty, nonintegers, zero, negatives and huge numbers."""
+    if isinstance(value, bool):
+        return None
+    if not isinstance(value, (int, str)) or str(value).strip() != str(value):
+        return None
+    try:
+        number = int(value)
+    except (ValueError, TypeError):
+        return None
+    return number if str(number) == str(value) and 1 <= number <= maximum else None
+
+
+def wristband(row):
+    return {'id': row['id'], 'type': row['typ'], 'balance': row['zetony'],
+            'owner': row['wlasciciel'], 'valid_until': row['wazna_do']}
+
+
+def attraction(row):
+    return {'id': row['id'], 'name': row['nazwa'], 'cost': row['koszt'], 'status': row['status']}
+
+
+def order_data(db, row):
+    items = db.execute('''SELECT p.nazwa AS name, poz.ilosc AS qty
+                          FROM pozycja_zamowienia poz
+                          JOIN produkt p ON poz.produkt_id=p.id
+                          WHERE poz.zamowienie_id=? ORDER BY poz.id''', (row['id'],)).fetchall()
+    return {'id': row['id'], 'items': [dict(item) for item in items],
+            'status': row['status'], 'time': row['utworzono'][11:16],
+            'total': row['suma_grosze'] / 100}
+
+
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+
+@app.get('/api/state')
+def get_state():
+    with database.connect() as db:
+        bands = db.execute('SELECT * FROM opaska ORDER BY id').fetchall()
+        attrs = db.execute('SELECT * FROM atrakcja ORDER BY id').fetchall()
+        orders = db.execute('SELECT * FROM zamowienie ORDER BY id DESC').fetchall()
+        products = db.execute('SELECT * FROM produkt ORDER BY id').fetchall()
+        return jsonify({
+            'wristbands': {row['id']: wristband(row) for row in bands},
+            'attractions': [attraction(row) for row in attrs],
+            'orders': [order_data(db, row) for row in orders],
+            'menu': [{'id': r['id'], 'name': r['nazwa'], 'price': r['cena_grosze'] / 100,
+                      'icon': r['ikona']} for r in products],
+        })
+
+
+@app.post('/api/wristbands')
+def create_wristband():
+    """F01: issue token band or 1/3/7-day pass."""
+    body = request.get_json(silent=True) or {}
+    kind = body.get('type')
+    if kind not in ('tokens', 'pass'):
+        return error('Wybierz rodzaj wejściówki.')
+    balance, expiry = 0, None
+    if kind == 'tokens':
+        balance = positive_int(body.get('tokens'), 10000)
+        if balance is None:
+            return error('Liczba żetonów musi być dodatnią liczbą całkowitą.')
+    else:
+        days = positive_int(body.get('days'), 7)
+        if days not in (1, 3, 7):
+            return error('Dostępne karnety: 1, 3 lub 7 dni.')
+        expiry = (datetime.now() + timedelta(days=days)).isoformat(timespec='seconds')
+    owner = str(body.get('owner') or 'Gość').strip()[:80] or 'Gość'
+    with database.transaction() as db:
+        next_id = db.execute("SELECT COALESCE(MAX(CAST(SUBSTR(id,5) AS INTEGER)),0)+1 FROM opaska").fetchone()[0]
+        band_id = f'PAS-{next_id:03d}'
+        db.execute('INSERT INTO opaska(id,typ,zetony,wazna_do,wlasciciel,utworzono) VALUES(?,?,?,?,?,?)',
+                   (band_id, kind, balance, expiry, owner, datetime.now().isoformat(timespec='seconds')))
+        row = db.execute('SELECT * FROM opaska WHERE id=?', (band_id,)).fetchone()
+    return jsonify({'wristband': wristband(row)}), 201
+
+
+@app.post('/api/wristbands/<band_id>/recharge')
+def recharge(band_id):
+    """F02: check and top-up an existing token wristband."""
+    amount = positive_int((request.get_json(silent=True) or {}).get('amount'), 10000)
+    if amount is None:
+        return error('Doładowanie musi być dodatnią liczbą całkowitą.')
+    with database.transaction() as db:
+        row = db.execute('SELECT * FROM opaska WHERE id=?', (band_id.upper(),)).fetchone()
+        if not row:
+            return error('Nie znaleziono opaski.', 404)
+        if row['typ'] != 'tokens':
+            return error('Nie można doładować karnetu czasowego.')
+        db.execute('UPDATE opaska SET zetony=zetony+? WHERE id=?', (amount, row['id']))
+        updated = db.execute('SELECT * FROM opaska WHERE id=?', (row['id'],)).fetchone()
+    return jsonify({'wristband': wristband(updated)})
+
+
+@app.get('/api/wristbands/<band_id>')
+def get_wristband(band_id):
+    with database.connect() as db:
+        row = db.execute('SELECT * FROM opaska WHERE id=?', (band_id.upper(),)).fetchone()
+        if not row:
+            return error('Nie znaleziono opaski.', 404)
+        return jsonify({'wristband': wristband(row)})
+
+
+@app.post('/api/orders')
+def new_order():
+    """F03: save a food order with its product rows and calculated total."""
+    items = (request.get_json(silent=True) or {}).get('items')
+    if not isinstance(items, list) or not items or len(items) > 30:
+        return error('Zamówienie musi zawierać co najmniej jeden produkt.')
+    with database.transaction() as db:
+        validated, total = [], 0
+        for item in items:
+            if not isinstance(item, dict):
+                return error('Niepoprawna pozycja zamówienia.')
+            product = db.execute('SELECT * FROM produkt WHERE id=?', (item.get('id'),)).fetchone()
+            qty = positive_int(item.get('qty'), 100)
+            if not product or qty is None:
+                return error('Nieznany produkt lub niepoprawna ilość.')
+            validated.append((product['id'], qty, product['cena_grosze']))
+            total += qty * product['cena_grosze']
+        now = datetime.now().isoformat(timespec='seconds')
+        cursor = db.execute('INSERT INTO zamowienie(status,utworzono,suma_grosze) VALUES(?,?,?)',
+                            ('Oczekujące', now, total))
+        order_id = cursor.lastrowid
+        db.executemany('INSERT INTO pozycja_zamowienia(zamowienie_id,produkt_id,ilosc,cena_grosze) '
+                       'VALUES(?,?,?,?)', [(order_id, *item) for item in validated])
+        row = db.execute('SELECT * FROM zamowienie WHERE id=?', (order_id,)).fetchone()
+        order = order_data(db, row)
+    return jsonify({'order': order}), 201
+
+
+@app.patch('/api/orders/<int:order_id>/status')
+def update_order_status(order_id):
+    """Optional prototype support for the kitchen (planned for v2)."""
+    status = (request.get_json(silent=True) or {}).get('status')
+    if status not in ORDER_STATUSES:
+        return error('Nieznany status zamówienia.')
+    with database.transaction() as db:
+        row = db.execute('SELECT id FROM zamowienie WHERE id=?', (order_id,)).fetchone()
+        if not row:
+            return error('Nie znaleziono zamówienia.', 404)
+        db.execute('UPDATE zamowienie SET status=? WHERE id=?', (status, order_id))
+    return jsonify({'status': status})
+
+
+@app.patch('/api/attractions/<int:attraction_id>/status')
+def change_attraction(attraction_id):
+    """F05: update attraction status; gate uses the same stored status."""
+    status = (request.get_json(silent=True) or {}).get('status')
+    if status not in VALID_STATUSES:
+        return error('Nieznany status atrakcji.')
+    with database.transaction() as db:
+        row = db.execute('SELECT * FROM atrakcja WHERE id=?', (attraction_id,)).fetchone()
+        if not row:
+            return error('Nie znaleziono atrakcji.', 404)
+        db.execute('UPDATE atrakcja SET status=? WHERE id=?', (status, attraction_id))
+        row = db.execute('SELECT * FROM atrakcja WHERE id=?', (attraction_id,)).fetchone()
+    return jsonify({'attraction': attraction(row)})
+
+
+@app.post('/api/entry')
+def verify_entry():
+    """F06: check admission and deduct tokens atomically if allowed."""
+    body = request.get_json(silent=True) or {}
+    band_id = str(body.get('wristband_id') or '').strip().upper()
+    attr_id = positive_int(body.get('attraction_id'), 100000)
+    if not band_id or attr_id is None:
+        return error('Podaj identyfikator opaski i wybierz atrakcję.')
+    with database.transaction() as db:
+        attr = db.execute('SELECT * FROM atrakcja WHERE id=?', (attr_id,)).fetchone()
+        if not attr:
+            return error('Nie znaleziono atrakcji.', 404)
+        if attr['status'] != 'Działająca':
+            return jsonify({'allowed': False, 'reason': 'attraction_closed',
+                            'message': f"Atrakcja jest niedostępna: {attr['status']}"})
+        band = db.execute('SELECT * FROM opaska WHERE id=?', (band_id,)).fetchone()
+        if not band:
+            return jsonify({'allowed': False, 'reason': 'unknown_wristband',
+                            'message': f'Nieznana opaska {band_id}.'})
+        cost = 0
+        if band['typ'] == 'pass':
+            if not band['wazna_do'] or datetime.fromisoformat(band['wazna_do']) <= datetime.now():
+                return jsonify({'allowed': False, 'reason': 'expired', 'message': 'Karnet stracił ważność.'})
+        else:
+            cost = attr['koszt']
+            if band['zetony'] < cost:
+                return jsonify({'allowed': False, 'reason': 'not_enough_tokens',
+                                'message': f"Brak żetonów: wymagane {cost}, dostępne {band['zetony']}."})
+            db.execute('UPDATE opaska SET zetony=zetony-? WHERE id=?', (cost, band_id))
+        db.execute('INSERT INTO wejscie(opaska_id,atrakcja_id,koszt_zetonow,czas) VALUES(?,?,?,?)',
+                   (band_id, attr_id, cost, datetime.now().isoformat(timespec='seconds')))
+        remaining = band['zetony'] - cost if band['typ'] == 'tokens' else None
+        return jsonify({'allowed': True, 'reason': 'ok', 'message': 'Zezwolono na wejście.',
+                        'wristband_id': band_id, 'owner': band['wlasciciel'],
+                        'type': band['typ'], 'attraction': attr['nazwa'],
+                        'deducted': cost, 'remaining': remaining})
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
