@@ -19,3 +19,7 @@ Prosty, przeglądarkowy system zarządzania parkiem rozrywki.
 ## Autorzy
 - Wojciech Wiśniewski
 - Jakub Zalewski
+
+Linki:
+- https://github.com/Challengeros2/InzOprogWWJZ
+- https://wwmw.labochat.com
