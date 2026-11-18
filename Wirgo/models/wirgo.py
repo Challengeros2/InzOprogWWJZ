@@ -1,4 +1,4 @@
-"""Model Wirgo: dane poczatkowe i logika F01, F02 oraz F03.
+"""Model Wirgo: dane poczatkowe i logika F01, F02, F03, F05 i F06.
 
 Pozostale funkcje zostana przeniesione osobno w kolejnych krokach P3.
 """
@@ -149,3 +149,60 @@ def create_food_order(items):
         row = db.execute('SELECT * FROM zamowienie WHERE id=?', (order_id,)).fetchone()
         order = order_data(db, row)
     return order
+
+
+VALID_ATTRACTION_STATUSES = {'Działająca', 'Uszkodzona', 'W trakcie naprawy', 'Zamknięta'}
+
+
+def change_attraction_status(attraction_id, status):
+    """F05: zmien status w SQLite i zwroc aktualne dane atrakcji."""
+    if status not in VALID_ATTRACTION_STATUSES:
+        raise InputError('Nieznany status atrakcji.')
+    with database.transaction() as db:
+        row = db.execute('SELECT * FROM atrakcja WHERE id=?', (attraction_id,)).fetchone()
+        if row is None:
+            raise NotFoundError('Nie znaleziono atrakcji.')
+        db.execute('UPDATE atrakcja SET status=? WHERE id=?', (status, attraction_id))
+        updated = db.execute('SELECT * FROM atrakcja WHERE id=?', (attraction_id,)).fetchone()
+    return attraction(updated)
+
+
+def verify_attraction_entry(wristband_id, attraction_id):
+    """F06: sprawdz wstep i pobierz zetony w jednej transakcji SQLite."""
+    band_id = str(wristband_id or '').strip().upper()
+    attr_id = _positive_int(attraction_id, 100000)
+    if not band_id or attr_id is None:
+        raise InputError('Podaj identyfikator opaski i wybierz atrakcję.')
+
+    with database.transaction() as db:
+        attr = db.execute('SELECT * FROM atrakcja WHERE id=?', (attr_id,)).fetchone()
+        if attr is None:
+            raise NotFoundError('Nie znaleziono atrakcji.')
+        if attr['status'] != 'Działająca':
+            return {'allowed': False, 'reason': 'attraction_closed',
+                    'message': f"Atrakcja jest niedostępna: {attr['status']}"}
+
+        band = db.execute('SELECT * FROM opaska WHERE id=?', (band_id,)).fetchone()
+        if band is None:
+            return {'allowed': False, 'reason': 'unknown_wristband',
+                    'message': f'Nieznana opaska {band_id}.'}
+
+        cost = 0
+        if band['typ'] == 'pass':
+            if not band['wazna_do'] or datetime.fromisoformat(band['wazna_do']) <= datetime.now():
+                return {'allowed': False, 'reason': 'expired',
+                        'message': 'Karnet stracił ważność.'}
+        else:
+            cost = attr['koszt']
+            if band['zetony'] < cost:
+                return {'allowed': False, 'reason': 'not_enough_tokens',
+                        'message': f"Brak żetonów: wymagane {cost}, dostępne {band['zetony']}."}
+            db.execute('UPDATE opaska SET zetony=zetony-? WHERE id=?', (cost, band_id))
+
+        db.execute('INSERT INTO wejscie(opaska_id,atrakcja_id,koszt_zetonow,czas) VALUES(?,?,?,?)',
+                   (band_id, attr_id, cost, datetime.now().isoformat(timespec='seconds')))
+        remaining = band['zetony'] - cost if band['typ'] == 'tokens' else None
+        return {'allowed': True, 'reason': 'ok', 'message': 'Zezwolono na wejście.',
+                'wristband_id': band_id, 'owner': band['wlasciciel'],
+                'type': band['typ'], 'attraction': attr['nazwa'],
+                'deducted': cost, 'remaining': remaining}
