@@ -1,4 +1,4 @@
-"""Model Wirgo: dane poczatkowe i logika F01.
+"""Model Wirgo: dane poczatkowe i logika F01, F02 oraz F03.
 
 Pozostale funkcje zostana przeniesione osobno w kolejnych krokach P3.
 """
@@ -90,3 +90,62 @@ def issue_wristband(body):
         )
         row = db.execute('SELECT * FROM opaska WHERE id=?', (band_id,)).fetchone()
     return wristband(row)
+
+
+class NotFoundError(LookupError):
+    """Brak wskazanego rekordu (HTTP 404 w kontrolerze)."""
+
+
+def read_wristband(band_id):
+    """F02: odczytaj stan opaski z SQLite. Bez kodu Flask."""
+    with database.connect() as db:
+        row = db.execute('SELECT * FROM opaska WHERE id=?', (band_id.upper(),)).fetchone()
+    if row is None:
+        raise NotFoundError('Nie znaleziono opaski.')
+    return wristband(row)
+
+
+def top_up_wristband(band_id, amount):
+    """F02: zweryfikuj kwote i zwieksz saldo opaski zetonowej."""
+    amount = _positive_int(amount, 10000)
+    if amount is None:
+        raise InputError('Doładowanie musi być dodatnią liczbą całkowitą.')
+    with database.transaction() as db:
+        row = db.execute('SELECT * FROM opaska WHERE id=?', (band_id.upper(),)).fetchone()
+        if row is None:
+            raise NotFoundError('Nie znaleziono opaski.')
+        if row['typ'] != 'tokens':
+            raise InputError('Nie można doładować karnetu czasowego.')
+        db.execute('UPDATE opaska SET zetony=zetony+? WHERE id=?', (amount, row['id']))
+        updated = db.execute('SELECT * FROM opaska WHERE id=?', (row['id'],)).fetchone()
+    return wristband(updated)
+
+
+def create_food_order(items):
+    """F03: zweryfikuj pozycje i zapisz cale zamowienie w jednej transakcji."""
+    if not isinstance(items, list) or not items or len(items) > 30:
+        raise InputError('Zamówienie musi zawierać co najmniej jeden produkt.')
+    with database.transaction() as db:
+        validated, total = [], 0
+        for item in items:
+            if not isinstance(item, dict):
+                raise InputError('Niepoprawna pozycja zamówienia.')
+            product = db.execute('SELECT * FROM produkt WHERE id=?', (item.get('id'),)).fetchone()
+            qty = _positive_int(item.get('qty'), 100)
+            if not product or qty is None:
+                raise InputError('Nieznany produkt lub niepoprawna ilość.')
+            validated.append((product['id'], qty, product['cena_grosze']))
+            total += qty * product['cena_grosze']
+        now = datetime.now().isoformat(timespec='seconds')
+        cursor = db.execute(
+            'INSERT INTO zamowienie(status,utworzono,suma_grosze) VALUES(?,?,?)',
+            ('Oczekujące', now, total)
+        )
+        order_id = cursor.lastrowid
+        db.executemany(
+            'INSERT INTO pozycja_zamowienia(zamowienie_id,produkt_id,ilosc,cena_grosze) '
+            'VALUES(?,?,?,?)', [(order_id, *item) for item in validated]
+        )
+        row = db.execute('SELECT * FROM zamowienie WHERE id=?', (order_id,)).fetchone()
+        order = order_data(db, row)
+    return order
