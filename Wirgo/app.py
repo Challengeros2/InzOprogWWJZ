@@ -1,7 +1,7 @@
 """Wirgo v1: a local Flask API for the existing browser interface."""
 from __future__ import annotations
 
-from datetime import datetime, timedelta
+from datetime import datetime
 
 from flask import Flask, jsonify, request
 
@@ -34,35 +34,9 @@ def positive_int(value, maximum=100000):
     return number if str(number) == str(value) and 1 <= number <= maximum else None
 
 
-# P2: strona glowna i /api/state sa teraz w controllers/api.py.
-# P3: pozostale funkcje MVP przeniesiemy pojedynczo do MVC.
-
-
-@app.post('/api/wristbands')
-def create_wristband():
-    """F01: issue token band or 1/3/7-day pass."""
-    body = request.get_json(silent=True) or {}
-    kind = body.get('type')
-    if kind not in ('tokens', 'pass'):
-        return error('Wybierz rodzaj wejściówki.')
-    balance, expiry = 0, None
-    if kind == 'tokens':
-        balance = positive_int(body.get('tokens'), 10000)
-        if balance is None:
-            return error('Liczba żetonów musi być dodatnią liczbą całkowitą.')
-    else:
-        days = positive_int(body.get('days'), 7)
-        if days not in (1, 3, 7):
-            return error('Dostępne karnety: 1, 3 lub 7 dni.')
-        expiry = (datetime.now() + timedelta(days=days)).isoformat(timespec='seconds')
-    owner = str(body.get('owner') or 'Gość').strip()[:80] or 'Gość'
-    with database.transaction() as db:
-        next_id = db.execute("SELECT COALESCE(MAX(CAST(SUBSTR(id,5) AS INTEGER)),0)+1 FROM opaska").fetchone()[0]
-        band_id = f'PAS-{next_id:03d}'
-        db.execute('INSERT INTO opaska(id,typ,zetony,wazna_do,wlasciciel,utworzono) VALUES(?,?,?,?,?,?)',
-                   (band_id, kind, balance, expiry, owner, datetime.now().isoformat(timespec='seconds')))
-        row = db.execute('SELECT * FROM opaska WHERE id=?', (band_id,)).fetchone()
-    return jsonify({'wristband': wristband(row)}), 201
+# P2: strona glowna i /api/state sa w controllers/api.py.
+# P3 F01: tworzenie opasek przeniesiono do kontrolera i modelu.
+# Pozostale funkcje sa nadal w tym pliku do kolejnych krokow.
 
 
 @app.post('/api/wristbands/<band_id>/recharge')
