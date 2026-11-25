@@ -52,9 +52,3 @@ git diff
 6. Podaj listę zmienionych plików i wyniki testów.
 
 Jeżeli testów nie udało się wykonać, należy to zaznaczyć.
-
-## 5. Aktualne zadanie – F02
-
-W laboratorium 05 analizowana jest funkcja F02 – sprawdzanie salda i doładowywanie opasek.
-
-Należy zachować działanie istniejącej funkcji, w tym odrzucanie niepoprawnych wartości doładowania. Zmiany powinny dotyczyć tylko niezbędnych fragmentów kodu i testów.
